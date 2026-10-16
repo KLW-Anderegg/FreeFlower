@@ -2,9 +2,8 @@
 %% choose document class (book / article / exam / beamer / flashcards)
 
 %% BOOK
-\documentclass[a4paper,11pt,svgnames,table,oneside]{book}
 % \documentclass[a4paper,11pt,svgnames,exerciseonly,oneside]{book}
-% \documentclass[a4paper,11pt,svgnames,oneside]{book}
+\documentclass[a4paper,11pt,svgnames,oneside]{book}
 
 %% ARTICLE
 % \documentclass[svgnames,hyphens]{article}
@@ -12,11 +11,10 @@
 %% EXAM
 % \documentclass[11pt,addpoints,svgnames]{exam}
 % \documentclass[11pt,addpoints,answers,svgnames]{exam}
-
-%% BEAMER SLIDES (Choose aspect ratio: 169 = 16:9 widescreen, 43 = 4:3 standard, 1610 = 16:10)
-% \documentclass[aspectratio=169,xcolor={table,dvipsnames,svgnames},hyphens]{beamer} %% 16:9 Widescreen (Recommended)
-% \documentclass[aspectratio=43,xcolor={table,dvipsnames,svgnames},hyphens]{beamer}  %% 4:3 Standard
-% \documentclass[aspectratio=169,xcolor={table,dvipsnames,svgnames},hyphens,handout]{beamer}
+ 
+%% BEAMER
+% \documentclass[xcolor={table,dvipsnames,svgnames},hyphens]{beamer}
+% \documentclass[xcolor={table,dvipsnames,svgnames},hyphens,handout]{beamer}
 
 %% FLASHCARDS
 % \documentclass[frame, avery5388, svgnames]{flashcards}
@@ -29,7 +27,7 @@
 %% set toggles (switches) for the document class
 \newtoggle{book} \newtoggle{article} \newtoggle{exam} \newtoggle{beamer} \newtoggle{flashcards} %% default value is 'false'
 
-\def\documentToggle{0} %% <---- choose number (0=book, 1=article, 2=exam, 3=beamer, 4=flashcards)
+\def\documentToggle{0} %% <---- choose number
 
 \ifnumequal{\documentToggle}{0}{\settoggle{book}{true}}{}     %% book (0)
 \ifnumequal{\documentToggle}{1}{\settoggle{article}{true}}{}  %% article (1)
@@ -37,13 +35,8 @@
 \ifnumequal{\documentToggle}{3}{\settoggle{beamer}{true}}{}   %% beamer (3)
 \ifnumequal{\documentToggle}{4}{\settoggle{flashcards}{true}}{}   %% flashcards (4)
 
-%% School Customization Settings (open-source default: false = neutral layout)
-%% Set 'schoolcustomization' to 'true' to enable school-specific branding (e.g. FDU).
-\newtoggle{schoolcustomization} \settoggle{schoolcustomization}{false}
-\def\schoolTheme{FDU} %% Theme subfolder inside Customizations/ (e.g., FDU)
-
 %% Does the document contain at least one citation?  (true / false)
-\newtoggle{citations} \settoggle{citations}{false}
+\newtoggle{citations} \settoggle{citations}{true}
 
 %% Define project-specific toggles (values are set in each project individually)
 % Should the title page include a school logo? (true / false)
@@ -70,7 +63,7 @@
 %% BOOK
 \iftoggle{book} {%
 	%% Grundlagenfach Informatik
-	% \input{Grundlagen_Info/00_Programmieren/Skript/Skript.tex}
+	\input{Grundlagen_Info/00_Programmieren/Skript/Skript.tex}
 	% \input{Grundlagen_Info/01_TheoretischeInformatik/Randomisierte_Algorithmen/Skript/Skript.tex}
 	% \input{Grundlagen_Info/03_Kryptologie/Skript/Skript.tex}
 	% \input{Grundlagen_Info/04_Kompression/Skript.tex}
@@ -85,7 +78,7 @@
 	% \input{Grundlagen_Info/11_Hardware/Skript/Skript_NAND2CPU.tex}
 	% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Skript/Skript.tex}
 	% \input{Grundlagen_Info/14_KI_und_Prompting/Skript/Skript.tex}
-	% \input{Grundlagen_Info/16_ComputerUndKodierungen/Skript/Skript.tex}
+	% \input{Grundlagen_Info/16_ComputerUndBetriebssysteme/Skript/Skript.tex}
 
 	%% Ergänzungsfach Informatik
 	% \input{EF/physikalische_simulation/skript_simulation.tex} % Physikalische Simulation
@@ -108,9 +101,6 @@
 	%%% Private %%%
 	% (wn) Skript Geografie LOFS
 	% \input{Private/PHBern/2 FD/LOFS/Skript.tex}
-
-	%%% Freifach
-	% \input{FF/Robotik/Skript/Skript_Robotik.tex} % Robotik
 } {}
 
 %% ARTICLE
@@ -123,9 +113,7 @@
 		% \input{Grundlagen_Info/08_Gesellschaft/Feedback/Feedback}
 		% \input{Grundlagen_Info/08_Gesellschaft/Vertiefungsthema}
 		% \input{Grundlagen_Info/Various/Semesterplanung}
-		% \input{Grundlagen_Info/Various/Semesterplanung_FDU}
 		% \input{Grundlagen_Info/Various/Benotung}
-		% \input{Grundlagen_Info/Various/Benotung_FDU}
 
 		% Ergänzungsfach Informatik
 		% \input{EF/Ausschreibung/ausschreibungstext.tex}
@@ -169,138 +157,113 @@
 
 %% EXAM
 \iftoggle{exam} {
-	\begin{document}
-		% Grundlagenfach Informatik
-		% \input{Grundlagen_Info/Exam_Questions/Questions}
-		% \input{Grundlagen_Info/00_Programmieren/Exam_Questions/QuestionsProg}
-		% \input{Grundlagen_Info/01_TheoretischeInformatik/Randomisierte_Algorithmen/Exams/probepruefung_randomisiertes_protokoll.tex}
+\begin{document}
+% Grundlagenfach Informatik
+% \input{Grundlagen_Info/Exam_Questions/Questions}
+% \input{Grundlagen_Info/00_Programmieren/Exam_Questions/QuestionsProg}
+% \input{Grundlagen_Info/01_TheoretischeInformatik/Randomisierte_Algorithmen/Exams/probepruefung_randomisiertes_protokoll.tex}
 
-		% Ergänzungsfach Informatik
-		% \input{EF/Complexity/exam_complexity.tex}
-		% \input{EF/Kolmogorov/Exams/exam_kolmogorov.tex}
-		% \input{EF/Kolmogorov/Exams/exam_kolmogorov_2025.tex}
-		% \input{EF/Complexity/exam_complexity_Jan_2026.tex}
-		% \input{EF/Exams/exam_07_04_2026.tex}
+% Ergänzungsfach Informatik
+% \input{EF/Complexity/exam_complexity.tex}
+% \input{EF/Kolmogorov/Exams/exam_kolmogorov.tex}
+% \input{EF/Kolmogorov/Exams/exam_kolmogorov_2025.tex}
+% \input{EF/Complexity/exam_complexity_Jan_2026.tex}
+% \input{EF/Exams/exam_07_04_2026.tex}
 
-		% Geografie
-		% \input{Geografie/Stadtgeografie/Prüfungen/Stadtgeografie_Pruefung.tex}
-		% \input{Geografie/Stadtgeografie/Prüfungen/Stadtgeografie_NHP.tex}
-	\end{document}
+% Geografie
+% \input{Geografie/Stadtgeografie/Prüfungen/Stadtgeografie_Pruefung.tex}
+% \input{Geografie/Stadtgeografie/Prüfungen/Stadtgeografie_NHP.tex}
+\end{document}
 } {}
 
 %% BEAMER
 \iftoggle{beamer} {
 	\begin{document}
-		% Grundlagenfach Informatik
-		% \input{Grundlagen_Info/00_Programmieren/Slides/Examples_Exam}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K01K02Intro}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K03aVariablen}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K03bInput}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K03cModulo}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K04aFunktionen}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K04bParameter}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K04cFunktionenEinzelne}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K04cFunktionenMehrere}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K04ZeitTabellen}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K05aIfElifElse}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K05bLogischeOperatoren}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K05cNegation}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K05dBreakWhile}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K06aListen}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K06bBubbleSort}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K06cBinarySearch}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K06dListenTeil2}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K06eDictionaries}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K06fSets}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/K07Klassen}
-		% \input{Grundlagen_Info/00_Programmieren/Slides/TurtleGrafik}
-		% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L01}
-		% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L02}
-		% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L04}
-		% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L03}
-		% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L05}
-		% \input{Grundlagen_Info/02_Graphen/Graphen_L01}
-		% \input{Grundlagen_Info/02_Graphen/Graphen_L02}
-		% \input{Grundlagen_Info/02_Graphen/Graphen_L03}
-		% \input{Grundlagen_Info/02_Graphen/AbstraktionDurchGraphen/Slides_Kapitel01}
-		% \input{Grundlagen_Info/02_Graphen/AbstraktionDurchGraphen/Slides_Kapitel02}
-		% Grundlagenfach Informatik - Kryptologie
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Slides_Kryptologie_Gf}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L01prog}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L01}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L02}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L03}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L04}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L05}
-		% Modular slide files:
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L02a_Kryptoanalyse_Caesar}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L02b_Kryptoanalyse_Monoalph}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L02c_Kryptoanalyse_Vigenere}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L02d_Kryptoanalyse_Vigenere_Kasiski}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L02e_Kryptoanalyse_Vigenere_Friedman}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L02f_Bin_OTP}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L03a_Drei_Wege_Schluesseltausch}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L03b_Diffie_Hellman_Merkle}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L04a_Asymmetrische_Kryptosysteme_RSA}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L04b_Digitale_Signaturen_RSA}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/L05_Digitale_Zertifikate_PKI}
-		% \input{Grundlagen_Info/03_Kryptologie/Slides/Appendix}
-		% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L01_Intro}
-		% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L02_MaxBal}
-		% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L03_Huffman}
-		% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L04_Arithm}
-		% \input{Grundlagen_Info/04_Kompression/Kompression_L02}
-		% \input{Grundlagen_Info/05_Datenintegritaet/Slides/01_Intro}
-		% \input{Grundlagen_Info/05_Datenintegritaet/Slides/02_Fehlererkennung}
-		% \input{Grundlagen_Info/05_Datenintegritaet/Slides/03_Fehlerkorrektur}
-		% \input{Grundlagen_Info/05_Datenintegritaet/Slides/04_Kartentrick}
-		% \input{Grundlagen_Info/05_Datenintegritaet/Slides/05_RAID}
-		% \input{Grundlagen_Info/06_Datenbanken/Slides/01_Slides_Intro}
-		% \input{Grundlagen_Info/06_Datenbanken/Slides/02_Slides_SELECT}
-		% \input{Grundlagen_Info/06_Datenbanken/Slides/02b_Slides_Subqueries}
-		% \input{Grundlagen_Info/06_Datenbanken/Slides/03_Slides_JOIN}
-		% \input{Grundlagen_Info/06_Datenbanken/Slides/04_Slides_DML}
-		% \input{Grundlagen_Info/06_Datenbanken/Slides/05_Slides_Game}
-		% \input{Grundlagen_Info/07_Netzwerke/Slides/00_Netzwerke_Geschichte}
-		% \input{Grundlagen_Info/07_Netzwerke/Slides/01_Netzwerke_Intro}
-		% \input{Grundlagen_Info/07_Netzwerke/Slides/02_Netzwerke_Sockets}
-		% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/correlation_causation}
-		% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/linear_regression}
-		% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/markov_chains}
-		% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/markov_appendix}
-		% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/decision_trees}
-		% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/pagerank}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L01_WasIstInformatik}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L02_BasisgroessenUndStellenwert}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L03_UmrechnungUndHex}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L04_BinaerRechnenUndBits}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L06_BilderUndFarben}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L05_ASCIIUndUTF8}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L07_DateiformateUndSpeicher}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L08_LogischeGatterI}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L09_LogischeGatterII}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L10_AufbauComputerI}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L11_AufbauComputerII}
-		% \input{Grundlagen_Info/16_ComputerUndKodierungen/Slides/L12_Betriebssystem}
+	% Grundlagenfach Informatik
+	% \input{Grundlagen_Info/00_Programmieren/Slides/Examples_Exam}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K01K02Intro}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K03aVariablen}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K03bInput}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K03cModulo}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K04aFunktionen}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K04bParameter}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K04cFunktionenEinzelne}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K04cFunktionenMehrere}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K04ZeitTabellen}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K05aIfElifElse}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K05bLogischeOperatoren}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K05cNegation}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K05dBreakWhile}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K06aListen}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K06bBubbleSort}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K06cBinarySearch}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K06dListenTeil2}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K06eDictionaries}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K06fSets}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/K07Klassen}
+	% \input{Grundlagen_Info/00_Programmieren/Slides/TurtleGrafik}
+	% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L01}
+	% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L02}
+	% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L04}
+	% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L03}
+	% \input{Grundlagen_Info/13_ZahlendarstellungenUndKodierungen/Slides/Zahlensysteme_L05}
+	% \input{Grundlagen_Info/02_Graphen/Graphen_L01}
+	% \input{Grundlagen_Info/02_Graphen/Graphen_L02}
+	% \input{Grundlagen_Info/02_Graphen/Graphen_L03}
+	% \input{Grundlagen_Info/02_Graphen/AbstraktionDurchGraphen/Slides_Kapitel01}
+	% \input{Grundlagen_Info/02_Graphen/AbstraktionDurchGraphen/Slides_Kapitel02}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/Slides_Kryptologie_Gf}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L01}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/Kryptologie_L01prog}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/L02a_Kryptoanalyse_Caesar}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/L02b_Kryptoanalyse_Monoalph}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/L02c_Kryptoanalyse_Vigenere}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/L02d_Kryptoanalyse_Vigenere_Kasiski}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/L02e_Kryptoanalyse_Vigenere_Friedman}
+	% \input{Grundlagen_Info/03_Kryptologie/Slides/Appendix}
+	% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L01_Intro}
+	% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L02_MaxBal}
+	% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L03_Huffman}
+	% \input{Grundlagen_Info/04_Kompression/Slides/Kompression_L04_Arithm}
+	% \input{Grundlagen_Info/04_Kompression/Kompression_L02}
+	% \input{Grundlagen_Info/05_Datenintegritaet/Slides/01_Intro}
+	% \input{Grundlagen_Info/05_Datenintegritaet/Slides/02_Fehlererkennung}
+	% \input{Grundlagen_Info/05_Datenintegritaet/Slides/03_Fehlerkorrektur}
+	% \input{Grundlagen_Info/05_Datenintegritaet/Slides/04_Kartentrick}
+	% \input{Grundlagen_Info/05_Datenintegritaet/Slides/05_RAID}
+	% \input{Grundlagen_Info/06_Datenbanken/Slides/01_Slides_Intro}
+	% \input{Grundlagen_Info/06_Datenbanken/Slides/02_Slides_SELECT}
+	% \input{Grundlagen_Info/06_Datenbanken/Slides/02b_Slides_Subqueries}
+	% \input{Grundlagen_Info/06_Datenbanken/Slides/03_Slides_JOIN}
+	% \input{Grundlagen_Info/06_Datenbanken/Slides/04_Slides_DML}
+	% \input{Grundlagen_Info/06_Datenbanken/Slides/05_Slides_Game}
+	% \input{Grundlagen_Info/07_Netzwerke/Slides/00_Netzwerke_Geschichte}
+	% \input{Grundlagen_Info/07_Netzwerke/Slides/01_Netzwerke_Intro}
+	% \input{Grundlagen_Info/07_Netzwerke/Slides/02_Netzwerke_Sockets}
+	% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/correlation_causation}
+	% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/linear_regression}
+	% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/markov_chains}
+	% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/markov_appendix}
+	% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/decision_trees}
+	% \input{Grundlagen_Info/10_KI_und_Algorithmen/Slides/pagerank}
 
-		% Ergänzungsfach Informatik
-		% \input{EF/Complexity/complexity}
-		% \input{EF/LaTeX/Slides/Slides_0}
+	% Ergänzungsfach Informatik
+	% \input{EF/Complexity/complexity}
+	% \input{EF/LaTeX/Slides/Slides_0}
 
-		% Various
-		% \input{Grundlagen_Info/Various/Semesterplanung_Slides.tex}
-		% \input{Grundlagen_Info/Various/Intro_FDU.tex}
-		% \input{Various/MINT_Tag/Presentation_MINT_Tag}
-		% \input{Various/ETH_STACK_Meeting_2025/Presentation_STACK}
-		% \input{Various/Wahlpflichtmodul Statistik/K01_Deskriptive_Statistik.tex}
-		% \input{Various/Fachschaftsmodule/git.tex}
+	% Various
+	% \input{Grundlagen_Info/Various/Semesterplanung_Slides.tex}
+	% \input{Various/MINT_Tag/Presentation_MINT_Tag}
+	% \input{Various/ETH_STACK_Meeting_2025/Presentation_STACK}
+	% \input{Various/Wahlpflichtmodul Statistik/K01_Deskriptive_Statistik.tex}
+	% \input{Various/Fachschaftsmodule/git.tex}
 	\end{document}
 } {}
 
 %% FLASHCARDS
 \iftoggle{flashcards} {
 	\begin{document}
-		% \input{Geografie/Stadtgeografie/Flashcards Stadttypen}
-		% \input{Geografie/Geomorphologie/Flashcards Geomorphologie}
+	% \input{Geografie/Stadtgeografie/Flashcards Stadttypen}
+	% \input{Geografie/Geomorphologie/Flashcards Geomorphologie}
 	\end{document}
 } {}

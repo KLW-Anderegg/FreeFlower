@@ -4,7 +4,7 @@
 Bisher haben wir uns mit Variablen beschäftigt, die nur einen Wert speichern können:
 \begin{itemize}
 	\item \lstinline|x = 3| (eine Zahl / \enquote{integer})
-	\item \lstinline|name = "Hallo"| (einen Text /  \enquote{string})
+	\item \lstinline|name = ``Hallo''| (einen Text /  \enquote{string})
 	\item \lstinline|ist_wahr = True| (einen Wahrheitswert / \enquote{boolean})
 \end{itemize}
 
@@ -261,9 +261,9 @@ preis_rabattiert = preis_ohne_rabatt * (100 - rabatt_prozent) / 100
 \begin{mychallenge}
 	Schreiben Sie nun eine Funktion, mit der Sie beliebig viele Nährwerte und Mengenangaben mittels Input eingeben. Die Funktion soll folgendes machen:
 	\begin{enumerate}
-		\item Mittels \lstinline|input("...")| nach einer Kalorienangabe für ein Lebensmittel fragen (pro 100 Gramm).
-		\item Mittels \lstinline|input("...")| nach der konsumierten Menge für dasselbe Lebensmittel fragen.
-		\item Mittels \lstinline|input("...")| fragen, ob noch weitere Lebensmittel hinzukommen.
+		\item Mittels \lstinline|input(``...'')| nach einer Kalorienangabe für ein Lebensmittel fragen (pro 100 Gramm).
+		\item Mittels \lstinline|input(``...'')| nach der konsumierten Menge für dasselbe Lebensmittel fragen.
+		\item Mittels \lstinline|input(``...'')| fragen, ob noch weitere Lebensmittel hinzukommen.
 	\end{enumerate}
 
 	Schritt 1-2 sollen so lange wiederholt werden, bis in Schritt 3  \lstinline|False| eingegeben wird.
@@ -308,26 +308,26 @@ Folgender Code zeigt, wie der Bubble-Sort-Algorithmus in Python implementiert we
 
 Um zu verstehen, wie lange ein Algorithmus benötigt, um eine Aufgabe zu lösen, ist es wichtig, die Zeitkomplexität des Algorithmus zu analysieren. Wenn ein Algorithmus beispielsweise mit grösserwerdender Anzahl Zahlen im Quadrat länger dauert, ist dies viel ungünstiger als ein Algorithmus, der so lange dauert, wie die Anzahl der Zahlen. In der Informatik wird die Zeitkomplexität eines Algorithmus oft in Bezug auf die Eingabegrösse angegeben, um zu verstehen, wie sich die Laufzeit des Algorithmus mit zunehmender Eingabegrösse verändert. Im vorliegenden Fall ist die Eingabegrösse die Anzahl der Werte in der Liste, die sortiert werden soll.
 
-Der Bubble-Sort-Algorithmus verwendet zwei verschachtelte Schleifen: die äussere Schleife durchläuft die Liste $n-$ Mal, und die innere Schleife durchläuft die Liste ebenfalls $n-1$ Mal, um die benachbarten Werte zu vergleichen und zu vertauschen. Die gesamte Anzahl der Vergleiche, die der Algorithmus durchführt, ist also $(n-1)^2$. Durch Umformung dieser Gleichung erhalten wir:
+Der Bubble-Sort-Algorithmus verwendet zwei verschachtelte Schleifen: die äussere Schleife durchläuft die Liste \(n-\) Mal, und die innere Schleife durchläuft die Liste ebenfalls \(n-1\) Mal, um die benachbarten Werte zu vergleichen und zu vertauschen. Die gesamte Anzahl der Vergleiche, die der Algorithmus durchführt, ist also \((n-1)^2\). Durch Umformung dieser Gleichung erhalten wir:
 \[(n-1)^2=\colorbox{yellow}{\ensuremath{n^2}}-2n+1\]
-Wir erkennen, dass bei sehr grossen Werten von $n$ die quadratische Komponente $\colorbox{yellow}{\ensuremath{n^2}}$ dominiert, während die lineare Komponente $-2n$ und die Konstante $1$ im Vergleich vernachlässigbar werden. Daher wird die Zeitkomplexität des Bubble-Sort-Algorithmus als $O(n^2)$ ausgedrückt (s. \cref{mydefinition:big_o_notation}).
+Wir erkennen, dass bei sehr grossen Werten von \(n\) die quadratische Komponente \(\colorbox{yellow}{\ensuremath{n^2}}\) dominiert, während die lineare Komponente \(-2n\) und die Konstante \(1\) im Vergleich vernachlässigbar werden. Daher wird die Zeitkomplexität des Bubble-Sort-Algorithmus als \(O(n^2)\) ausgedrückt (s. \cref{mydefinition:big_o_notation}).
 
 \begin{mydefinition}[Big-O-Notation]
 	\label{mydefinition:big_o_notation}
-	Die Laufzeit eines Algorithmus wird oft mit der sogenannten \textbf{Big O-Notation} angegeben, die die Wachstumsrate der Laufzeit in Bezug auf die Eingabegrösse beschreibt. Dabei wird die Laufzeit in der Form $O(f(n))$ (\enquote{Big O von f von n}) angegeben, wobei $f(n)$ eine Funktion ist, die die Anzahl der Schritte beschreibt, die der Algorithmus benötigt, um eine Eingabe der Grösse $n$ zu verarbeiten.
+	Die Laufzeit eines Algorithmus wird oft mit der sogenannten \textbf{Big O-Notation} angegeben, die die Wachstumsrate der Laufzeit in Bezug auf die Eingabegrösse beschreibt. Dabei wird die Laufzeit in der Form \(O(f(n))\) (\enquote{Big O von f von n}) angegeben, wobei \(f(n)\) eine Funktion ist, die die Anzahl der Schritte beschreibt, die der Algorithmus benötigt, um eine Eingabe der Grösse \(n\) zu verarbeiten.
 
-	In der Big-O-Notation werden nur die dominanten Terme berücksichtigt, da sie den Hauptfaktor für das Wachstum der Laufzeit darstellen. Im Fall von Bubble Sort dominiert die quadratische Komponente ($n^2$), wenn $n$ sehr gross wird. Daher wird die Laufzeit des Algorithmus als $O(n^2)$ ausgedrückt. Entscheidend ist nur der Term, der das Wachstum der Laufzeit dominiert, und in diesem Fall ist es die quadratische Komponente $n^2$.
+	In der Big-O-Notation werden nur die dominanten Terme berücksichtigt, da sie den Hauptfaktor für das Wachstum der Laufzeit darstellen. Im Fall von Bubble Sort dominiert die quadratische Komponente (\(n^2\)), wenn \(n\) sehr gross wird. Daher wird die Laufzeit des Algorithmus als \(O(n^2)\) ausgedrückt. Entscheidend ist nur der Term, der das Wachstum der Laufzeit dominiert, und in diesem Fall ist es die quadratische Komponente \(n^2\).
 
 	Verschiedene typische Laufzeiten von Algorithmen werden in der Big-O-Notation wie folgt ausgedrückt:
 	\begin{itemize}
-		\item $O(1)$: konstante Laufzeit, unabhängig von der Eingabegrösse
-		\item $O(\log n)$: logarithmische Laufzeit, z.B. bei binärer Suche
-		\item $O(n)$: lineare Laufzeit, z.B. bei einfacher Iteration durch eine Liste
-		\item $O(n \log n)$: lineare-logarithmische Laufzeit, z.B. bei effizienten Sortieralgorithmen wie Mergesort oder Quicksort
-		\item $O(n^2)$: quadratische Laufzeit, z.B. bei einfachen Sortieralgorithmen wie Bubble Sort oder Insertion Sort
-		\item $O(n^3)$: kubische Laufzeit, z.B. bei bestimmten Algorithmen für Matrizenmultiplikation
-		\item $O(2^n)$: exponentielle Laufzeit, z.B. bei bestimmten rekursiven Algorithmen
-		\item $O(n!)$: faktoriale Laufzeit, z.B. bei bestimmten Brute-Force-Algorithmen
+		\item \(O(1)\): konstante Laufzeit, unabhängig von der Eingabegrösse
+		\item \(O(\log n)\): logarithmische Laufzeit, z.B. bei binärer Suche
+		\item \(O(n)\): lineare Laufzeit, z.B. bei einfacher Iteration durch eine Liste
+		\item \(O(n \log n)\): lineare-logarithmische Laufzeit, z.B. bei effizienten Sortieralgorithmen wie Mergesort oder Quicksort
+		\item \(O(n^2)\): quadratische Laufzeit, z.B. bei einfachen Sortieralgorithmen wie Bubble Sort oder Insertion Sort
+		\item \(O(n^3)\): kubische Laufzeit, z.B. bei bestimmten Algorithmen für Matrizenmultiplikation
+		\item \(O(2^n)\): exponentielle Laufzeit, z.B. bei bestimmten rekursiven Algorithmen
+		\item \(O(n!)\): faktoriale Laufzeit, z.B. bei bestimmten Brute-Force-Algorithmen
 	\end{itemize}
 
 	Einige dieser Laufzeiten sind in \cref{fig:big-o-complexities} grafisch dargestellt, um die Unterschiede in der Wachstumsrate zu verdeutlichen.
@@ -335,7 +335,7 @@ Wir erkennen, dass bei sehr grossen Werten von $n$ die quadratische Komponente $
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.85\textwidth]{Grundlagen_Info/00_Programmieren/Skript/Figures/big_o_complexities_plot.pdf}
-		\caption{Grafischer Vergleich wichtiger Laufzeiten in Abhängigkeit von der Eingabegrösse $n$}
+		\caption{Grafischer Vergleich wichtiger Laufzeiten in Abhängigkeit von der Eingabegrösse \(n\)}
 		\label{fig:big-o-complexities}
 	\end{figure}
 \end{mydefinition}
@@ -344,14 +344,14 @@ Wir erkennen, dass bei sehr grossen Werten von $n$ die quadratische Komponente $
 \begin{myexample}[Laufzeitkomplexität beider Bubble-Sort-Varianten: Big-O-Notation]
 	Die Laufzeitkomplexität des Bubble-Sort-Algorithmus kann folgendermassen in der Big-O-Notation ausgedrückt werden:
 	\begin{itemize}
-		\item \textbf{nicht optimierte Version:} Da wir zwei verschachtelte Schleifen haben, die je $n-1$ Durchläufe machen, beträgt die Anzahl der Vergleiche \[(n-1)^2\]
-		      Das bedeutet: Für eine Liste mit 6 Elementen sind das $5^2 = 25$ Vergleiche.
+		\item \textbf{nicht optimierte Version:} Da wir zwei verschachtelte Schleifen haben, die je \(n-1\) Durchläufe machen, beträgt die Anzahl der Vergleiche \[(n-1)^2\]
+		      Das bedeutet: Für eine Liste mit 6 Elementen sind das \(5^2 = 25\) Vergleiche.
 		      Die Anzahl der Vergleiche beträgt \[(n-1)^2 = \colorbox{yellow}{\ensuremath{n^2}} - 2n + 1\]
-		      In der Big O-Notation wird dies als $O(n^2)$ ausgedrückt, da die quadratische Komponente $n^2$ dominiert, wenn $n$ sehr gross wird.
+		      In der Big O-Notation wird dies als \(O(n^2)\) ausgedrückt, da die quadratische Komponente \(n^2\) dominiert, wenn \(n\) sehr gross wird.
 		\item \textbf{optimierte Version:}
-		      In der optimierten Version wird die innere Schleife nach jedem Durchlauf der äusseren Schleife um 1 verkleinert, da das grösste Element nach jedem Durchlauf an die richtige Position verschoben wird. Daher werden im ersten Durchlauf $n-1$ Vergleiche durchgeführt, im zweiten Durchlauf $n-2$ Vergleiche, und so weiter, bis im letzten Durchlauf nur noch 1 Vergleich durchgeführt wird. Die Anzahl der Vergleiche entspricht daher der Summe der Zahlen von 1 bis $n-1$. Für eine Liste mit 6 Elementen ergibt das also beispielsweise $\displaystyle\sum_{m=1}^{5} m = 1 + 2 + 3 + 4 + 5 = 15$ Vergleiche.
+		      In der optimierten Version wird die innere Schleife nach jedem Durchlauf der äusseren Schleife um 1 verkleinert, da das grösste Element nach jedem Durchlauf an die richtige Position verschoben wird. Daher werden im ersten Durchlauf \(n-1\) Vergleiche durchgeführt, im zweiten Durchlauf \(n-2\) Vergleiche, und so weiter, bis im letzten Durchlauf nur noch 1 Vergleich durchgeführt wird. Die Anzahl der Vergleiche entspricht daher der Summe der Zahlen von 1 bis \(n-1\). Für eine Liste mit 6 Elementen ergibt das also beispielsweise \(\displaystyle\sum_{m=1}^{5} m = 1 + 2 + 3 + 4 + 5 = 15\) Vergleiche.
 
-		      Diese Summe der Zahlen von 1 bis $n-1$ kann mit folgender Formel berechnet werden:
+		      Diese Summe der Zahlen von 1 bis \(n-1\) kann mit folgender Formel berechnet werden:
 		      \[
 			      (n-1) + (n-2) + \ldots + 2 + 1 = \displaystyle\sum_{m=1}^{n-1} m = \frac{(n-1) \cdot n}{2}
 		      \]
@@ -359,16 +359,16 @@ Wir erkennen, dass bei sehr grossen Werten von $n$ die quadratische Komponente $
 		      Die Herleitung dieser Formel ist in \cref{myremark:laufzeit_bubble_sort} dargestellt.
 
 
-		      Die Formel lässt sich wie folgt umformen, um die quadratische Komponente $n^2$ hervorzuheben:
+		      Die Formel lässt sich wie folgt umformen, um die quadratische Komponente \(n^2\) hervorzuheben:
 		      \[\frac{(n-1) \cdot n}{2}  = \frac{1}{2}\colorbox{yellow}{\ensuremath{n^2}} - \frac{1}{2}n\]
-		      Auch in der \enquote{optimierten} Version dominiert die quadratische Komponente $n^2$, wenn $n$ sehr gross wird, sodass die Laufzeit ebenfalls als $O(n^2)$ ausgedrückt wird.
+		      Auch in der \enquote{optimierten} Version dominiert die quadratische Komponente \(n^2\), wenn \(n\) sehr gross wird, sodass die Laufzeit ebenfalls als \(O(n^2)\) ausgedrückt wird.
 	\end{itemize}
-	Wir sehen also, dass die Optimierung die Anzahl der Vergleiche reduziert, aber die grundsätzliche Komplexität des Algorithmus bleibt $O(n^2)$.
+	Wir sehen also, dass die Optimierung die Anzahl der Vergleiche reduziert, aber die grundsätzliche Komplexität des Algorithmus bleibt \(O(n^2)\).
 \end{myexample}
 
 \begin{myexample}[Laufzeit der optimierten Version]
 	\label{myremark:laufzeit_bubble_sort}
-	Die Summe aller natürlichen Zahlen von 1 bis $n-1$ lässt sich folgendermassen als Formel ausdrücken:
+	Die Summe aller natürlichen Zahlen von 1 bis \(n-1\) lässt sich folgendermassen als Formel ausdrücken:
 	\begin{align*}
 		\sum_{m=1}^{n-1} m & = \overset{\text{Anzahl Summanden: }n-1}{\overbrace{\textcolor{blue}{1} + \textcolor{red}{2} + \textcolor{ForestGreen}{3} + \ldots + \textcolor{ForestGreen}{(n-3)} + \textcolor{red}{(n-2)} + \textcolor{blue}{(n-1)}}} \\
 		                   & = \overset{\text{Anzahl Paare: }\frac{n-1}{2}}{\overbrace{\textcolor{blue}{(1 + (n-1))} + \textcolor{red}{(2 + (n-2))} + \textcolor{ForestGreen}{(3 + (n-3))} + \ldots }}                                                \\
@@ -378,7 +378,7 @@ Wir erkennen, dass bei sehr grossen Werten von $n$ die quadratische Komponente $
 		                   & \Rightarrow O(n^2)
 	\end{align*}
 
-	In der ersten Zeile haben wir die Summe der Zahlen von 1 bis $n-1$ aufgeschrieben, die Summe setzt sich aus $n-1$ Summanden (Bestandteilen) zusammen. In der zweiten Zeile haben wir die Summanden mit gleichen Farben zu Paaren zusammengefasst, so dass wir nun nur noch halb so viele Paare ($\frac{n-1}{2}$) haben. Jedes dieser Paare ist gleich $n$. Wir haben also am Schluss $\frac{n-1}{2}$ Paare, die alle gleich $n$ sind, was zu $\frac{(n-1)}{2}\cdot n$ führt. In der letzten Zeile haben wir die Formel in eine Form gebracht, die die quadratische Komponente $n^2$ hervorhebt, um die Laufzeit in der Big-O-Notation zu bestimmen.
+	In der ersten Zeile haben wir die Summe der Zahlen von 1 bis \(n-1\) aufgeschrieben, die Summe setzt sich aus \(n-1\) Summanden (Bestandteilen) zusammen. In der zweiten Zeile haben wir die Summanden mit gleichen Farben zu Paaren zusammengefasst, so dass wir nun nur noch halb so viele Paare (\(\frac{n-1}{2}\)) haben. Jedes dieser Paare ist gleich \(n\). Wir haben also am Schluss \(\frac{n-1}{2}\) Paare, die alle gleich \(n\) sind, was zu \(\frac{(n-1)}{2}\cdot n\) führt. In der letzten Zeile haben wir die Formel in eine Form gebracht, die die quadratische Komponente \(n^2\) hervorhebt, um die Laufzeit in der Big-O-Notation zu bestimmen.
 \end{myexample}
 
 \subsubsection{Such-Algorithmen}
@@ -391,7 +391,7 @@ Ist die Liste jedoch bereits sortiert, wie zum Beispiel bei \lstinline|x = [2, 3
 \begin{figure}[H]
 	\centering
 	\raisebox{-0.5\height}{\includegraphics[width=.3\textwidth]{Grundlagen_Info/04_Kompression/Figures/messy_suitcase.jpg}}
-	\raisebox{-0.5\height}{$\rightarrow$}
+	\raisebox{-0.5\height}{\(\rightarrow\)}
 	\raisebox{-0.5\height}{\includegraphics[width=.3\textwidth]{Grundlagen_Info/00_Programmieren/Figures/prog-packing-cubes}}
 	\caption{Unordentlich gepackter Koffer vs. ordentlich gepackter Koffer}
 	\label{fig:koffer-suche}
@@ -462,27 +462,27 @@ Bei solchen, etwas komplexeren Codes, kann es nützlich sein, sich die Entwicklu
 \end{myexample}
 
 \begin{myremark}[Laufzeit der binären Suche]
-	Die binäre Suche hat eine Zeitkomplexität von $O(\log n)$, was bedeutet, dass die Laufzeit des Algorithmus logarithmisch mit der Anzahl der Werte in der Liste wächst. Dies macht die binäre Suche für grosse Datenmengen sehr effizient, insbesondere im Vergleich zur linearen Suche, die eine Zeitkomplexität von $O(n)$ hat.
+	Die binäre Suche hat eine Zeitkomplexität von \(O(\log n)\), was bedeutet, dass die Laufzeit des Algorithmus logarithmisch mit der Anzahl der Werte in der Liste wächst. Dies macht die binäre Suche für grosse Datenmengen sehr effizient, insbesondere im Vergleich zur linearen Suche, die eine Zeitkomplexität von \(O(n)\) hat.
 
 	Beweis:
-	Die binäre Suche halbiert die Anzahl der zu durchsuchenden Elemente in jedem Schritt. Wenn die Liste $n$ Elemente enthält, wird die Anzahl der verbleibenden Elemente nach $k$ Schritten durch die Formel $\frac{n}{2^k}$ gegeben. Um das gesuchte Element zu finden, muss die Anzahl der verbleibenden Elemente auf 1 reduziert werden, was bedeutet, dass $\frac{n}{2^k} = 1$ sein muss. Durch Umstellen dieser Gleichung erhalten wir $n = 2^k$, was bedeutet, dass $k = \log_2(n)$ ist. Daher wächst die Anzahl der Schritte logarithmisch mit der Anzahl der Elemente in der Liste, was zu einer Zeitkomplexität von $O(\log n)$ führt.
+	Die binäre Suche halbiert die Anzahl der zu durchsuchenden Elemente in jedem Schritt. Wenn die Liste \(n\) Elemente enthält, wird die Anzahl der verbleibenden Elemente nach \(k\) Schritten durch die Formel \(\frac{n}{2^k}\) gegeben. Um das gesuchte Element zu finden, muss die Anzahl der verbleibenden Elemente auf 1 reduziert werden, was bedeutet, dass \(\frac{n}{2^k} = 1\) sein muss. Durch Umstellen dieser Gleichung erhalten wir \(n = 2^k\), was bedeutet, dass \(k = \log_2(n)\) ist. Daher wächst die Anzahl der Schritte logarithmisch mit der Anzahl der Elemente in der Liste, was zu einer Zeitkomplexität von \(O(\log n)\) führt.
 \end{myremark}
 
 \begin{mychallenge}[Laufzeit der linearen und binären Suche]
-	Wie viele Vergleiche müssen im schlimmsten Fall bei einer linearen Suche durchgeführt werden, um ein Element in einer Liste der Länge $100$ zu finden? Wie viele Vergleiche müssen im schlimmsten Fall bei einer binären Suche durchgeführt werden, um ein Element in einer Liste der Länge $1000$ zu finden? Berechnen Sie die Anzahl der Vergleiche für beide Suchverfahren und vergleichen Sie die Ergebnisse.
+	Wie viele Vergleiche müssen im schlimmsten Fall bei einer linearen Suche durchgeführt werden, um ein Element in einer Liste der Länge \(100\) zu finden? Wie viele Vergleiche müssen im schlimmsten Fall bei einer binären Suche durchgeführt werden, um ein Element in einer Liste der Länge \(1000\) zu finden? Berechnen Sie die Anzahl der Vergleiche für beide Suchverfahren und vergleichen Sie die Ergebnisse.
 	\begin{myanswer}
 		\begin{itemize}
-			\item \textbf{lineare Suche:} Im schlimmsten Fall müssen alle Elemente der Liste überprüft werden, um das gesuchte Element zu finden. Daher beträgt die Anzahl der Vergleiche $100$ für eine Liste der Länge $100$ bzw. $1000$ für eine Liste der Länge $1000$.
-			\item \textbf{binäre Suche:} Die Anzahl der Vergleiche bei einer binären Suche kann mit der Formel $\log_2(n)$ berechnet werden, wobei $n$ die Anzahl der Elemente in der Liste ist. Für eine Liste der Länge $100$ beträgt die Anzahl der Vergleiche $\log_2(100) \approx 6.64$, was aufgerundet $7$ Vergleiche ergibt. Für eine Liste der Länge $1000$ beträgt die Anzahl der Vergleiche $\log_2(1000) \approx 9.97$, was aufgerundet $10$ Vergleiche ergibt.
+			\item \textbf{lineare Suche:} Im schlimmsten Fall müssen alle Elemente der Liste überprüft werden, um das gesuchte Element zu finden. Daher beträgt die Anzahl der Vergleiche \(100\) für eine Liste der Länge \(100\) bzw. \(1000\) für eine Liste der Länge \(1000\).
+			\item \textbf{binäre Suche:} Die Anzahl der Vergleiche bei einer binären Suche kann mit der Formel \(\log_2(n)\) berechnet werden, wobei \(n\) die Anzahl der Elemente in der Liste ist. Für eine Liste der Länge \(100\) beträgt die Anzahl der Vergleiche \(\log_2(100) \approx 6.64\), was aufgerundet \(7\) Vergleiche ergibt. Für eine Liste der Länge \(1000\) beträgt die Anzahl der Vergleiche \(\log_2(1000) \approx 9.97\), was aufgerundet \(10\) Vergleiche ergibt.
 		\end{itemize}
 	\end{myanswer}
 \end{mychallenge}
 
 \begin{mychallenge}[Laufzeitkomplexität eines Codes analysieren]
-	Betrachten Sie folgenden Codes, der eine Liste von Zahlen gegenüber einer anderen Liste von Zahlen überprüft und die Anzahl der gemeinsamen Elemente zählt. Analysieren Sie die Laufzeitkomplexität dieses Codes in Bezug auf die Länge der beiden Listen. Die Länge der ersten Liste wird mit $n$ und die Länge der zweiten Liste mit $m$ bezeichnet.
+	Betrachten Sie folgenden Codes, der eine Liste von Zahlen gegenüber einer anderen Liste von Zahlen überprüft und die Anzahl der gemeinsamen Elemente zählt. Analysieren Sie die Laufzeitkomplexität dieses Codes in Bezug auf die Länge der beiden Listen. Die Länge der ersten Liste wird mit \(n\) und die Länge der zweiten Liste mit \(m\) bezeichnet.
 	\lstinputlisting[language=Python,caption=\texttt{count\_common\_elements.py},label=listing:count_common_elements]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/count_common_elements.py}
 	\begin{myanswer}
-		Die Laufzeitkomplexität dieses Codes ist $O(n \cdot m)$, wobei $n$ die Länge der ersten Liste (\lstinline|liste1|) und $m$ die Länge der zweiten Liste (\lstinline|liste2|) ist. Dies liegt daran, dass der Code zwei verschachtelte Schleifen verwendet: Die äussere Schleife durchläuft jedes Element in \lstinline|liste1| (was $n$ Schritte erfordert), und für jedes Element in \lstinline|liste1| durchläuft die innere Schleife jedes Element in \lstinline|liste2| (was $m$ Schritte erfordert). Daher multiplizieren sich die Anzahl der Schritte der beiden Schleifen, was zu einer Gesamtzahl von $n \cdot m$ Schritten führt.
+		Die Laufzeitkomplexität dieses Codes ist \(O(n \cdot m)\), wobei \(n\) die Länge der ersten Liste (\lstinline|liste1|) und \(m\) die Länge der zweiten Liste (\lstinline|liste2|) ist. Dies liegt daran, dass der Code zwei verschachtelte Schleifen verwendet: Die äussere Schleife durchläuft jedes Element in \lstinline|liste1| (was \(n\) Schritte erfordert), und für jedes Element in \lstinline|liste1| durchläuft die innere Schleife jedes Element in \lstinline|liste2| (was \(m\) Schritte erfordert). Daher multiplizieren sich die Anzahl der Schritte der beiden Schleifen, was zu einer Gesamtzahl von \(n \cdot m\) Schritten führt.
 	\end{myanswer}
 \end{mychallenge}
 
@@ -560,7 +560,7 @@ print(meine_liste)  # Ausgabe: [1, 2, 3, 4]
 
 
 \begin{myexercise}
-	Fügen Sie der Liste \lstinline|fruechte = ["Apfel", "Banane"]| zuerst \lstinline|"Orange"| am Ende hinzu, dann \lstinline|"Kiwi"| an der zweiten Stelle. Entfernen Sie danach das erste Element der Liste und geben Sie die Liste aus.
+	Fügen Sie der Liste \lstinline|fruechte = [``Apfel'', ``Banane'']| zuerst \lstinline|``Orange''| am Ende hinzu, dann \lstinline|``Kiwi''| an der zweiten Stelle. Entfernen Sie danach das erste Element der Liste und geben Sie die Liste aus.
 
 	\begin{myanswer}
 		\lstinputlisting[language=Python,caption=\texttt{dynamic\_lists\_fruit.py},label=listing:dynamic_lists_fruit]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/dynamic_lists_fruit.py}
@@ -584,7 +584,7 @@ print(zahlen)  # [1, 2, 4, 5]
 \end{myexercise}
 
 \begin{myexercise}
-	Gegeben ist die Liste \lstinline|farben = ["rot", "blau", "grün"]|. Fügen Sie \lstinline|"gelb"| an der zweiten Stelle ein und entfernen Sie das letzte Element mit \lstinline|.pop()|. Geben Sie die veränderte Liste aus.
+	Gegeben ist die Liste \lstinline|farben = [``rot'', ``blau'', ``grün'']|. Fügen Sie \lstinline|``gelb''| an der zweiten Stelle ein und entfernen Sie das letzte Element mit \lstinline|.pop()|. Geben Sie die veränderte Liste aus.
 
 	\begin{myanswer}
 		\lstinputlisting[language=Python,caption=\texttt{dynamic\_lists\_fruit\_2.py},label=listing:dynamic_lists_fruit_2]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/dynamic_lists_fruit_2.py}
@@ -709,7 +709,7 @@ else:
 \end{myexample}
 
 \begin{myexercise}
-	Erstellen Sie ein Dictionary \lstinline|noten|, das die Noten von drei Schülern speichert: \lstinline|"Lea"| (Note 5.5), \lstinline|"Tim"| (Note 4.0), \lstinline|"Sara"| (Note 6.0). Geben Sie die Note von \lstinline|"Sara"| aus.
+	Erstellen Sie ein Dictionary \lstinline|noten|, das die Noten von drei Schülern speichert: \lstinline|``Lea''| (Note 5.5), \lstinline|``Tim''| (Note 4.0), \lstinline|``Sara''| (Note 6.0). Geben Sie die Note von \lstinline|``Sara''| aus.
 
 	\begin{myanswer}
 		\begin{lstlisting}
@@ -732,7 +732,7 @@ print(noten)
 \end{myexercise}
 
 \begin{myexercise}
-	Sie verwalten die Lagerbestände eines kleinen Geschäfts. Erstellen Sie ein Dictionary \lstinline|lager| mit den Produkten \lstinline|"Cola"| (10 Stück), \lstinline|"Fanta"| (5 Stück) und \lstinline|"Wasser"| (20 Stück). Schreiben Sie ein Programm, das die Anzahl der Flaschen \lstinline|"Fanta"| um 2 reduziert (z.B. durch Verkauf) und das neue Dictionary ausgibt.
+	Sie verwalten die Lagerbestände eines kleinen Geschäfts. Erstellen Sie ein Dictionary \lstinline|lager| mit den Produkten \lstinline|``Cola''| (10 Stück), \lstinline|``Fanta''| (5 Stück) und \lstinline|``Wasser''| (20 Stück). Schreiben Sie ein Programm, das die Anzahl der Flaschen \lstinline|``Fanta''| um 2 reduziert (z.B. durch Verkauf) und das neue Dictionary ausgibt.
 
 	\begin{myanswer}
 		\begin{lstlisting}
@@ -746,16 +746,16 @@ print(lager)
 \begin{myexercise}
 	Erstellen Sie ein Dictionary, das für verschiedene Länder die jeweilige Hauptstadt speichert:
 	\begin{itemize}
-		\item Für die Schweiz: \lstinline|"Hier gibt es keine Hauptstadt, nur eine Bundesstadt."|
-		\item Für Deutschland: \lstinline|"Berlin"|
-		\item Für Frankreich: \lstinline|"Paris"|
+		\item Für die Schweiz: \lstinline|``Bern''|
+		\item Für Deutschland: \lstinline|``Berlin''|
+		\item Für Frankreich: \lstinline|``Paris''|
 	\end{itemize}
 
 	Lassen Sie den Benutzer mit \lstinline|input()| nach einem Land fragen und geben Sie die entsprechende Hauptstadt aus dem Dictionary mit \lstinline|print| aus.
 
 	Falls das eingegebene Land nicht im Dictionary existiert, soll ausgegeben werden:
 
-	\lstinline|"Land nicht gefunden."|
+	\lstinline|``Land nicht gefunden.''|
 
 	siehe \cref{ex:keyExists} für Hinweise dazu, wie dies umgesetzt werden kann.
 
@@ -831,187 +831,187 @@ wettervorhersage = {
 	\end{myanswer}
 \end{myexercise}
 
-\clearpage
-\section{Mengen (sets)}
-Mengen (en. \textit{sets}) sind eine weitere wichtige Datenstruktur in der Informatik. Eine Menge ist eine Sammlung von einzigartigen Elementen, die keine bestimmte Reihenfolge haben. In Python werden Mengen mit geschweiften Klammern \lstinline|{| und \lstinline|}| oder mit dem Befehl \lstinline|set()| erstellt.
+% \clearpage
+% \section{Mengen (sets)}
+% Mengen (en. \textit{sets}) sind eine weitere wichtige Datenstruktur in der Informatik. Eine Menge ist eine Sammlung von einzigartigen Elementen, die keine bestimmte Reihenfolge haben. In Python werden Mengen mit geschweiften Klammern \lstinline|{| und \lstinline|}| oder mit dem Befehl \lstinline|set()| erstellt.
 
-In Python stehen die Mengenoperationen, welche Ihnen aus dem Mathematikunterricht wohlvertraut sind, zur Verfügung. Wir werden die drei mengentheoretischen Operationen \textit{Vereinigung}, \textit{Schnittmenge} und \textit{Differenz} einführen und mittels \tib{Venndiagrammen}\footnote{Benannt nach dem englischen Mathematiker \textit{John Venn Junior}.} illustrieren.
+% In Python stehen die Mengenoperationen, welche Ihnen aus dem Mathematikunterricht wohlvertraut sind, zur Verfügung. Wir werden die drei mengentheoretischen Operationen \textit{Vereinigung}, \textit{Schnittmenge} und \textit{Differenz} einführen und mittels \tib{Venndiagrammen}\footnote{Benannt nach dem englischen Mathematiker \textit{John Venn Junior}.} illustrieren.
 
-\begin{itemize}
-	\item $\mathbf{A \cup B}$, in Python: \lstinline/A | B/\\
-	      $A \cup B := \setcm{x\in M}{(x\in A) \lor (x\in B)}$\\
-	      Die \tib{Vereinigung} von $A$ und $B$. Die Vereinigung von $A$ und $B$ enthält genau alle Elemente, die in $A$ \textbf{oder} $B$ liegen.
-	      % Set A or B
-	      \begin{center}
-		      \begin{tikzpicture}
-			      \draw[filled] \firstcircle node {$A$}
-			      \secondcircle node {$B$};
-			      \node[anchor=south] at (current bounding box.north) {$A \cup B$};
-		      \end{tikzpicture}
-	      \end{center}
-	\item $\mathbf{A \cap B}$, in Python: \lstinline|A & B|\\
-	      $A \cap B := \setcm{x\in M}{(x\in A) \land (x\in B)}$\\
-	      Die \tib{Schnittmenge} von $A$ und $B$. Die Schnittmenge von $A$ und $B$ enthält genau alle Elemente, die in $A$ \textbf{und} in $B$ liegen.
-	      % Set A and B
-	      \begin{center}
-		      \begin{tikzpicture}
-			      \begin{scope}
-				      \clip \firstcircle;
-				      \fill[filled] \secondcircle;
-			      \end{scope}
-			      \draw[outline] \firstcircle node {$A$};
-			      \draw[outline] \secondcircle node {$B$};
-			      \node[anchor=south] at (current bounding box.north) {$A \cap B$};
-		      \end{tikzpicture}
-	      \end{center}
-	\item $\mathbf{A\setminus B}$, in Python: \lstinline|A - B|\\
-	      $A\setminus B := \setcm{x\in M}{(x\in A) \land (x\notin B)}$\\
-	      Die \tib{Differenz} von $A$ und $B$. Die Differenz von $A$ und $B$ enthält genau alle Elemente, die in $A$ aber \textbf{nicht} in $B$ liegen.
-	      % Set A but not B
-	      \begin{center}
-		      \begin{tikzpicture}
-			      \begin{scope}
-				      \clip \firstcircle;
-				      \draw[filled, even odd rule] \firstcircle node {$A$}
-				      \secondcircle;
-			      \end{scope}
-			      \draw[outline] \firstcircle
-			      \secondcircle node {$B$};
-			      \node[anchor=south] at (current bounding box.north) {$A \setminus B$};
-		      \end{tikzpicture}
-	      \end{center}
-	      % \item $\mathbf{\Bar{A}_M}$\\
-	      % $\Bar{A}_M:= \setcm{x\in M}{x\notin A}$\\
-	      % Das \tib{Komplement} von $A$ in $M$ enthält alle Elemente der Grundmenge $M$, die nicht in $A$ sind. Falls aus dem Zusammenhang klar ist, welche Grundmenge gemeint ist, dann kann man das Schreiben der tiefgestellten Grundmenge weglassen: es genügt dann nur $\Bar{A}$ anstelle von $0\Bar{A}_M$ zu schreiben.
-	      % % A complement
-	      % \begin{center}
-	      % \begin{tikzpicture}
-	      % \scope
-	      %     \clip \firstcircle \bigrectangle;
-	      %     \fill[filled] \bigrectangle;
-	      % \endscope
-	      % \draw[outline] \firstcircle node {$A$};
-	      % \draw[outline] \secondcircle node {$B$};
-	      % \node[anchor=south] at (current bounding box.north) {$\Bar{A}_M$};
-	      % \node[anchor=south] at (current bounding box.south) {$M$};
-	      % \end{tikzpicture}
-	      % \end{center}
-\end{itemize}
+% \begin{itemize}
+% 	\item $\mathbf{A \cup B}$, in Python: \lstinline/A | B/\\
+% 	      $A \cup B := \setcm{x\in M}{(x\in A) \lor (x\in B)}$\\
+% 	      Die \tib{Vereinigung} von $A$ und $B$. Die Vereinigung von $A$ und $B$ enthält genau alle Elemente, die in $A$ \textbf{oder} $B$ liegen.
+% 	      % Set A or B
+% 	      \begin{center}
+% 		      \begin{tikzpicture}
+% 			      \draw[filled] \firstcircle node {$A$}
+% 			      \secondcircle node {$B$};
+% 			      \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+% 		      \end{tikzpicture}
+% 	      \end{center}
+% 	\item $\mathbf{A \cap B}$, in Python: \lstinline|A & B|\\
+% 	      $A \cap B := \setcm{x\in M}{(x\in A) \land (x\in B)}$\\
+% 	      Die \tib{Schnittmenge} von $A$ und $B$. Die Schnittmenge von $A$ und $B$ enthält genau alle Elemente, die in $A$ \textbf{und} in $B$ liegen.
+% 	      % Set A and B
+% 	      \begin{center}
+% 		      \begin{tikzpicture}
+% 			      \begin{scope}
+% 				      \clip \firstcircle;
+% 				      \fill[filled] \secondcircle;
+% 			      \end{scope}
+% 			      \draw[outline] \firstcircle node {$A$};
+% 			      \draw[outline] \secondcircle node {$B$};
+% 			      \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+% 		      \end{tikzpicture}
+% 	      \end{center}
+% 	\item $\mathbf{A\setminus B}$, in Python: \lstinline|A - B|\\
+% 	      $A\setminus B := \setcm{x\in M}{(x\in A) \land (x\notin B)}$\\
+% 	      Die \tib{Differenz} von $A$ und $B$. Die Differenz von $A$ und $B$ enthält genau alle Elemente, die in $A$ aber \textbf{nicht} in $B$ liegen.
+% 	      % Set A but not B
+% 	      \begin{center}
+% 		      \begin{tikzpicture}
+% 			      \begin{scope}
+% 				      \clip \firstcircle;
+% 				      \draw[filled, even odd rule] \firstcircle node {$A$}
+% 				      \secondcircle;
+% 			      \end{scope}
+% 			      \draw[outline] \firstcircle
+% 			      \secondcircle node {$B$};
+% 			      \node[anchor=south] at (current bounding box.north) {$A \setminus B$};
+% 		      \end{tikzpicture}
+% 	      \end{center}
+% 	      % \item $\mathbf{\Bar{A}_M}$\\
+% 	      % $\Bar{A}_M:= \setcm{x\in M}{x\notin A}$\\
+% 	      % Das \tib{Komplement} von $A$ in $M$ enthält alle Elemente der Grundmenge $M$, die nicht in $A$ sind. Falls aus dem Zusammenhang klar ist, welche Grundmenge gemeint ist, dann kann man das Schreiben der tiefgestellten Grundmenge weglassen: es genügt dann nur $\Bar{A}$ anstelle von $0\Bar{A}_M$ zu schreiben.
+% 	      % % A complement
+% 	      % \begin{center}
+% 	      % \begin{tikzpicture}
+% 	      % \scope
+% 	      %     \clip \firstcircle \bigrectangle;
+% 	      %     \fill[filled] \bigrectangle;
+% 	      % \endscope
+% 	      % \draw[outline] \firstcircle node {$A$};
+% 	      % \draw[outline] \secondcircle node {$B$};
+% 	      % \node[anchor=south] at (current bounding box.north) {$\Bar{A}_M$};
+% 	      % \node[anchor=south] at (current bounding box.south) {$M$};
+% 	      % \end{tikzpicture}
+% 	      % \end{center}
+% \end{itemize}
 
-Falls $M$ eine endliche Menge ist (nicht unendlich viele Elemente enthält), dann bezeichnet $\abs{M}$ die Anzahl der Elemente in $M$. In Python finden wir die Anzahl der Elemente in der Menge $M$ mit dem Befehl \lstinline|len(M)|.
+% Falls $M$ eine endliche Menge ist (nicht unendlich viele Elemente enthält), dann bezeichnet $\abs{M}$ die Anzahl der Elemente in $M$. In Python finden wir die Anzahl der Elemente in der Menge $M$ mit dem Befehl \lstinline|len(M)|.
 
-\begin{myexample}[Mengen erstellen und Mengenoperationen anwenden]
-	Sets können in Python mit geschweiften Klammern \lstinline|{| und \lstinline|}| oder mit dem Befehl \lstinline|set()| erstellt werden. Folgender Code zeigt die drei Mengenoperationen an einem Beispiel mit Früchten.
-	\lstinputlisting[language=Python,caption=\texttt{example\_sets\_fruit.py},label=listing:example_sets_fruit]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/example_sets_fruit.py}
-\end{myexample}
+% \begin{myexample}[Mengen erstellen und Mengenoperationen anwenden]
+% 	Sets können in Python mit geschweiften Klammern \lstinline|{| und \lstinline|}| oder mit dem Befehl \lstinline|set()| erstellt werden. Folgender Code zeigt die drei Mengenoperationen an einem Beispiel mit Früchten.
+% 	\lstinputlisting[language=Python,caption=\texttt{example\_sets\_fruit.py},label=listing:example_sets_fruit]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/example_sets_fruit.py}
+% \end{myexample}
 
-\begin{myexercise}
-	An einer Schule können Schüler mehrere Kurse wählen. Manche Kurse überschneiden sich, andere sind Pflicht.
-	\begin{lstlisting}
-# Gegeben:
-schueler_a = ["Mathe", "Englisch", "Informatik", "Biologie"]
-schueler_b = ["Mathe", "Englisch", "Informatik", "Kunst", "Musik"]
-schueler_c = ["Informatik", "Englisch", "Sport", "Geschichte"]
+% \begin{myexercise}
+% 	An einer Schule können Schüler mehrere Kurse wählen. Manche Kurse überschneiden sich, andere sind Pflicht.
+% 	\begin{lstlisting}
+% # Gegeben:
+% schueler_a = ["Mathe", "Englisch", "Informatik", "Biologie"]
+% schueler_b = ["Mathe", "Englisch", "Informatik", "Kunst", "Musik"]
+% schueler_c = ["Informatik", "Englisch", "Sport", "Geschichte"]
 
-pflichtkurse = ["Mathe", "Englisch"]
-wahlkurse   = ["Informatik", "Biologie", "Kunst", "Musik", "Sport", "Geschichte"]
-\end{lstlisting}
+% pflichtkurse = ["Mathe", "Englisch"]
+% wahlkurse   = ["Informatik", "Biologie", "Kunst", "Musik", "Sport", "Geschichte"]
+% \end{lstlisting}
 
-	\begin{enumerate}
-		\item Finden Sie alle \textbf{Kurse}, die mindestens einer der Schüler belegt.
-		\item Finden Sie alle \textbf{Kurse}, die von allen drei Schülern gemeinsam belegt werden.
-		\item Bestimmen Sie alle \textbf{Kurse}, die exklusiv nur Schüler A hat.
-		\item Ermitteln Sie die \textbf{Pflichtkurse}, die zwar existieren, aber von mindestens einem Schüler \textbf{nicht gewählt} wurden.
-		\item Stellen Sie eine Liste aller \textbf{Wahlkurse} zusammen, die \textbf{alle drei Schüler gemeinsam} gewählt haben.
-	\end{enumerate}
+% 	\begin{enumerate}
+% 		\item Finden Sie alle \textbf{Kurse}, die mindestens einer der Schüler belegt.
+% 		\item Finden Sie alle \textbf{Kurse}, die von allen drei Schülern gemeinsam belegt werden.
+% 		\item Bestimmen Sie alle \textbf{Kurse}, die exklusiv nur Schüler A hat.
+% 		\item Ermitteln Sie die \textbf{Pflichtkurse}, die zwar existieren, aber von mindestens einem Schüler \textbf{nicht gewählt} wurden.
+% 		\item Stellen Sie eine Liste aller \textbf{Wahlkurse} zusammen, die \textbf{alle drei Schüler gemeinsam} gewählt haben.
+% 	\end{enumerate}
 
-	\textbf{Tipp}: Mit dem Befehl \lstinline|set(liste)| können Sie eine Liste in eine Menge umwandeln. Mit dem Befehl \lstinline|list(menge)| können Sie eine Menge wieder in eine Liste umwandeln. %
+% 	\textbf{Tipp}: Mit dem Befehl \lstinline|set(liste)| können Sie eine Liste in eine Menge umwandeln. Mit dem Befehl \lstinline|list(menge)| können Sie eine Menge wieder in eine Liste umwandeln. %
 
-	\begin{lstlisting}
-# Beispiel-Ausgabe:
-Alle belegten Kurse: {'Biologie', 'Kunst', 'Musik', 'Sport', 'Mathe', 'Englisch', 'Geschichte', 'Informatik'}
-Gemeinsame Kurse aller: {'Englisch', 'Informatik'}
-Exklusiv nur Schüler A: {'Biologie'}
-Pflichtkurse, die fehlen: {'Mathe'}
-Gemeinsame Wahlkurse: {'Informatik'}
-\end{lstlisting}
-	\begin{myanswer}
-		\leavevmode
-		\lstinputlisting[language=Python,caption=\texttt{sol\_auswahl\_kurse.py},label=listing:sol_auswahl_kurse]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/sol_auswahl_kurse.py}
-	\end{myanswer}
-\end{myexercise}
+% 	\begin{lstlisting}
+% # Beispiel-Ausgabe:
+% Alle belegten Kurse: {'Biologie', 'Kunst', 'Musik', 'Sport', 'Mathe', 'Englisch', 'Geschichte', 'Informatik'}
+% Gemeinsame Kurse aller: {'Englisch', 'Informatik'}
+% Exklusiv nur Schüler A: {'Biologie'}
+% Pflichtkurse, die fehlen: {'Mathe'}
+% Gemeinsame Wahlkurse: {'Informatik'}
+% \end{lstlisting}
+% 	\begin{myanswer}
+% 		\leavevmode
+% 		\lstinputlisting[language=Python,caption=\texttt{sol\_auswahl\_kurse.py},label=listing:sol_auswahl_kurse]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/sol_auswahl_kurse.py}
+% 	\end{myanswer}
+% \end{myexercise}
 
 
-\section{Tuple}
-Tuples sind eine weitere grundlegende Datenstruktur in Python, die Ähnlichkeiten mit Listen aufweisen, sich aber in einem entscheidenden Punkt unterscheiden: ihrer Unveränderlichkeit.
+% \section{Tuple}
+% Tuples sind eine weitere grundlegende Datenstruktur in Python, die Ähnlichkeiten mit Listen aufweisen, sich aber in einem entscheidenden Punkt unterscheiden: ihrer Unveränderlichkeit.
 
-\begin{mydefinition}
-	Ein Tuple in Python ist eine geordnete, unveränderliche Sammlung von Elementen.
-	Tuples sind ähnlich wie Listen, können aber nach ihrer Erstellung nicht mehr verändert werden.
-	Man erstellt sie, indem man Elemente in runde Klammern setzt, getrennt durch Kommas.
-\end{mydefinition}
+% \begin{mydefinition}
+% 	Ein Tuple in Python ist eine geordnete, unveränderliche Sammlung von Elementen.
+% 	Tuples sind ähnlich wie Listen, können aber nach ihrer Erstellung nicht mehr verändert werden.
+% 	Man erstellt sie, indem man Elemente in runde Klammern setzt, getrennt durch Kommas.
+% \end{mydefinition}
 
-Tuples in Python haben die folgenden Eigenschaften:
-\begin{itemize}
-	\item \textbf{Unveränderlichkeit (Immutability):} Versucht man, ein Element zu ändern, erhält man eine Fehlermeldung. Zum Beispiel würde \lstinline|koordinaten[0] = 5| einen Fehler verursachen.
-	\item \textbf{Geordnetheit:} Die Reihenfolge der Elemente bleibt erhalten.
-	\item \textbf{Heterogenität:} Ein Tuple kann verschiedene Datentypen enthalten, wie ganze Zahlen, Zeichenketten oder sogar andere Tuples. Zum Beispiel: \lstinline|person = ('Anna', 30, True)|.
-	\item \textbf{Anwendungsbereiche:} Tuples werden oft verwendet, wenn man sicherstellen will, dass Daten nicht versehentlich geändert werden, wie z. B. bei Datenbankkoordinaten, Rückgabewerten von Funktionen oder als Schlüssel in einem Wörterbuch.
-\end{itemize}
+% Tuples in Python haben die folgenden Eigenschaften:
+% \begin{itemize}
+% 	\item \textbf{Unveränderlichkeit (Immutability):} Versucht man, ein Element zu ändern, erhält man eine Fehlermeldung. Zum Beispiel würde \lstinline|koordinaten[0] = 5| einen Fehler verursachen.
+% 	\item \textbf{Geordnetheit:} Die Reihenfolge der Elemente bleibt erhalten.
+% 	\item \textbf{Heterogenität:} Ein Tuple kann verschiedene Datentypen enthalten, wie ganze Zahlen, Zeichenketten oder sogar andere Tuples. Zum Beispiel: \lstinline|person = ('Anna', 30, True)|.
+% 	\item \textbf{Anwendungsbereiche:} Tuples werden oft verwendet, wenn man sicherstellen will, dass Daten nicht versehentlich geändert werden, wie z. B. bei Datenbankkoordinaten, Rückgabewerten von Funktionen oder als Schlüssel in einem Wörterbuch.
+% \end{itemize}
 
-Tuples sind besonders nützlich, wenn Sie eine feste Anzahl von Elementen haben, die zusammengehören, wie z. B. die Koordinaten eines Punktes in einem 2D-Raum (x, y). Tuples können auch als Rückgabewerte von Funktionen verwendet werden, um mehrere Werte gleichzeitig zurückzugeben.
+% Tuples sind besonders nützlich, wenn Sie eine feste Anzahl von Elementen haben, die zusammengehören, wie z. B. die Koordinaten eines Punktes in einem 2D-Raum (x, y). Tuples können auch als Rückgabewerte von Funktionen verwendet werden, um mehrere Werte gleichzeitig zurückzugeben.
 
-\begin{myexample}[Tuples für 2D-Koordinaten]
-	\leavevmode
-	\begin{lstlisting}[language=Python]
-# ein Tuple (für 2D-Koordinaten) erstellen
-koordinaten = (10, 20)
+% \begin{myexample}[Tuples für 2D-Koordinaten]
+% 	\leavevmode
+% 	\begin{lstlisting}[language=Python]
+% # ein Tuple (für 2D-Koordinaten) erstellen
+% koordinaten = (10, 20)
 
-# das Tuple mit print ausgeben
-print(koordinaten)
+% # das Tuple mit print ausgeben
+% print(koordinaten)
 
-# das erste Element des Tuples ausgeben (Index 0)
-print(koordinaten[0])
+% # das erste Element des Tuples ausgeben (Index 0)
+% print(koordinaten[0])
 
-# das zweite Element des Tuples ausgeben (Index 1)
-print(koordinaten[1])
+% # das zweite Element des Tuples ausgeben (Index 1)
+% print(koordinaten[1])
 
-# Error! Tuples sind unveränderlich!
-koordinaten[0] = 5
-\end{lstlisting}
-\end{myexample}
+% # Error! Tuples sind unveränderlich!
+% koordinaten[0] = 5
+% \end{lstlisting}
+% \end{myexample}
 
-\begin{myexample}[Tuples für Rückgabewerte von Funktionen]
-	\leavevmode
-	\begin{lstlisting}[language=Python]
-def berechne_summe_und_produkt(a, b):
-	summe = a + b
-	produkt = a * b
-	return summe, produkt  # Rückgabe als Tuple
+% \begin{myexample}[Tuples für Rückgabewerte von Funktionen]
+% 	\leavevmode
+% 	\begin{lstlisting}[language=Python]
+% def berechne_summe_und_produkt(a, b):
+% 	summe = a + b
+% 	produkt = a * b
+% 	return summe, produkt  # Rückgabe als Tuple
 
-summe, produkt = berechne_summe_und_produkt(3, 4)
-print("Summe:", summe)       # Summe: 7
-print("Produkt:", produkt)   # Produkt: 12
-\end{lstlisting}
-\end{myexample}
+% summe, produkt = berechne_summe_und_produkt(3, 4)
+% print("Summe:", summe)       # Summe: 7
+% print("Produkt:", produkt)   # Produkt: 12
+% \end{lstlisting}
+% \end{myexample}
 
-\begin{myexercise}[Funktion mit mehreren Rückgabewerten]
+% \begin{myexercise}[Funktion mit mehreren Rückgabewerten]
 
-	Schreiben Sie eine Funktion \lstinline|min_max(liste)|, die eine Liste von Zahlen als Eingabe erhält und ein Tuple zurückgibt, das die kleinste und die grösste Zahl in der Liste enthält.
+% 	Schreiben Sie eine Funktion \lstinline|min_max(liste)|, die eine Liste von Zahlen als Eingabe erhält und ein Tuple zurückgibt, das die kleinste und die grösste Zahl in der Liste enthält.
 
-	\begin{myanswer}
-		\lstinputlisting[language=Python,caption=\texttt{min\_max.py},label=listing:min_max]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/min_max.py}
-	\end{myanswer}
+% 	\begin{myanswer}
+% 		\lstinputlisting[language=Python,caption=\texttt{min\_max.py},label=listing:min_max]{Grundlagen_Info/00_Programmieren/Skript/Code/K06_Datenstrukturen/min_max.py}
+% 	\end{myanswer}
 
-\end{myexercise}
+% \end{myexercise}
 
-\begin{myremark}[Nützlichkeit von Tuples und Rückgabewerte]
-	Tuples sind besonders nützlich, wenn Sie eine feste Anzahl von Elementen haben, die zusammengehören, wie z. B. die Koordinaten eines Punktes in einem 2D-Raum (x, y). Tuples können auch als Rückgabewerte von Funktionen verwendet werden, um mehrere Werte gleichzeitig zurückzugeben.
+% \begin{myremark}[Nützlichkeit von Tuples und Rückgabewerte]
+% 	Tuples sind besonders nützlich, wenn Sie eine feste Anzahl von Elementen haben, die zusammengehören, wie z. B. die Koordinaten eines Punktes in einem 2D-Raum (x, y). Tuples können auch als Rückgabewerte von Funktionen verwendet werden, um mehrere Werte gleichzeitig zurückzugeben.
 
-	Weshalb geben Funktionen mit mehreren Rückgabewerten ein Tuple zurück, anstatt eine Liste zu verwenden? In Python gibt es keine speziellen ``mehrfachen Rückgabewerte''. Stattdessen fasst die Sprache mehrere Werte automatisch zu einem Tuple zusammen. Ein Tuple eignet sich dafür besonders gut, weil es eine feste Anzahl von Werten mit einer festen Bedeutung beschreibt (z. B. Breite und Höhe oder Quotient und Rest). Listen hingegen stehen eher für veränderbare Sammlungen von Elementen. Dass Tuples unveränderlich sind, ist dabei ein zusätzlicher Vorteil, aber nicht der Hauptgrund für ihre Verwendung.
-\end{myremark}
+% 	Weshalb geben Funktionen mit mehreren Rückgabewerten ein Tuple zurück, anstatt eine Liste zu verwenden? In Python gibt es keine speziellen ``mehrfachen Rückgabewerte''. Stattdessen fasst die Sprache mehrere Werte automatisch zu einem Tuple zusammen. Ein Tuple eignet sich dafür besonders gut, weil es eine feste Anzahl von Werten mit einer festen Bedeutung beschreibt (z. B. Breite und Höhe oder Quotient und Rest). Listen hingegen stehen eher für veränderbare Sammlungen von Elementen. Dass Tuples unveränderlich sind, ist dabei ein zusätzlicher Vorteil, aber nicht der Hauptgrund für ihre Verwendung.
+% \end{myremark}
 
-\section{Weitere Aufgaben}
+\subsection{Weitere Aufgaben}
 \begin{myexercise}[Notenspiegel für mehrere Personen]
 
 	Sie möchten ein Programm schreiben, das für mehrere Personen in Ihrer Klasse den Notenschnitt berechnet und prüft, ob jede Person ihr Ziel erreicht hat.
@@ -1021,8 +1021,8 @@ print("Produkt:", produkt)   # Produkt: 12
 		      \begin{itemize}
 			      \item Der Parameter \lstinline{punkte_dict} ist ein Dictionary, in dem jeder Schlüssel ein Name ist und jeder Wert eine Liste von Noten für die jeweilige Person (oder Punkten).
 			      \item Die Funktion berechnet für jede Person den Durchschnitt und gibt ein Dictionary zurück, in dem die Namen den berechneten Schnitten zugeordnet sind.
-			      \item Beispiel: \lstinline|schnitt({"Anna":[5.0,5.5,4.5,6.0],"Ben":[4.0,3.5,4.5]})|
-			            \newline Rückgabe: \lstinline|{"Anna":5.25,"Ben":4.0}|
+			      \item Beispiel: \lstinline|schnitt({``Anna'':[5.0,5.5,4.5,6.0],``Ben'':[4.0,3.5,4.5]})|
+			            \newline Rückgabe: \lstinline|{``Anna'':5.25,``Ben'':4.0}|
 		      \end{itemize}
 
 		\item \textbf{Teilaufgabe 2:} Schreiben Sie die Funktion \lstinline{ziel_erreicht(schnitte, zielnote)}.
@@ -1030,8 +1030,8 @@ print("Produkt:", produkt)   # Produkt: 12
 			      \item Der Parameter \lstinline{schnitte} ist ein Dictionary mit Namen und Schnittwerten (Rückgabe von \lstinline{schnitt}).
 			      \item Der Parameter \lstinline{zielnote} ist eine Zahl, z.\,B. 4.0, die angibt, ab welchem Schnitt eine Person ihr Ziel erreicht hat.
 			      \item Die Funktion gibt ein Dictionary zurück, das für jede Person angibt, ob das Ziel erreicht wurde (\lstinline{True} oder \lstinline{False}).
-			      \item Beispiel: \lstinline|ziel_erreicht({"Anna":5.25,"Ben":4.0}, 4.5)|
-			            \newline Rückgabe: \lstinline|{"Anna":True,"Ben":False}|
+			      \item Beispiel: \lstinline|ziel_erreicht({``Anna'':5.25,``Ben'':4.0}, 4.5)|
+			            \newline Rückgabe: \lstinline|{``Anna'':True,``Ben'':False}|
 		      \end{itemize}
 	\end{itemize}
 
@@ -1080,8 +1080,8 @@ print(ziele)     # {"Anna": True, "Ben": False, "Clara": True}
 			      \item Der Parameter \lstinline{max_preis} gibt den maximal erlaubten Preis pro Gericht an.
 			      \item Der Parameter \lstinline{nur_vegi} gibt an, ob nur vegetarische Gerichte erlaubt sind (mögliche Werte: \lstinline{True} oder \lstinline{False}).
 			      \item Die Funktion gibt eine Liste mit den Gerichten (als Dictionaries) zurück, welche die Bedingungen erfüllen.
-			      \item Beispiel: \lstinline|filter_menue([{"name":"Pasta","preis":9.5,"vegi":True},{"name":"Schnitzel","preis":12.0,"vegi":False}], 10.0, True)|
-			            \newline Rückgabe: \lstinline|[{"name":"Pasta","preis":9.5,"vegi":True}]|
+			      \item Beispiel: \lstinline|filter_menue([{``name'':``Pasta'',``preis'':9.5,``vegi'':True},{``name'':``Schnitzel'',``preis'':12.0,``vegi'':False}], 10.0, True)|
+			            \newline Rückgabe: \lstinline|[{``name'':``Pasta'',``preis'':9.5,``vegi'':True}]|
 		      \end{itemize}
 
 		\item \textbf{Teilaufgabe 2:} Schreiben Sie die Funktion \lstinline{budget_check(gerichte, budget, tage)}.
@@ -1089,9 +1089,9 @@ print(ziele)     # {"Anna": True, "Ben": False, "Clara": True}
 			      \item Der Parameter \lstinline{gerichte} ist eine Liste der gewählten Gerichte (z.B. Rückgabe von \lstinline{filter_menue}).
 			      \item Der Parameter \lstinline{budget} ist das verfügbare Budget für die Woche.
 			      \item Der Parameter \lstinline{tage} ist die Anzahl der Tage, an denen in der Mensa gegessen wird.
-			      \item Die Funktion berechnet die Gesamtkosten und prüft, ob das Budget ausreicht. Sie gibt ein Dictionary zurück mit den Schlüsseln \lstinline{"summe"} und \lstinline{"ok"}.
-			      \item Beispiel: \lstinline|budget_check([{"preis":9.5},{"preis":9.5},{"preis":9.5}], 30.0, 5)|
-			            \newline Rückgabe: \lstinline|{"summe":28.5,"ok":True}|
+			      \item Die Funktion berechnet die Gesamtkosten und prüft, ob das Budget ausreicht. Sie gibt ein Dictionary zurück mit den Schlüsseln \lstinline{``summe''} und \lstinline{``ok''}.
+			      \item Beispiel: \lstinline|budget_check([{``preis'':9.5},{``preis'':9.5},{``preis'':9.5}], 30.0, 5)|
+			            \newline Rückgabe: \lstinline|{``summe'':28.5,``ok'':True}|
 		      \end{itemize}
 	\end{itemize}
 
@@ -1128,7 +1128,7 @@ print(check)     # {"summe": 28.5, "ok": True}
 \end{lstlisting}
 	\end{myanswer}
 \end{myexercise}
-
-\begin{myremark}[Weitere Arten, Schleifen durchzulaufen]
-	Weitere Arten, Schleifen über Listen oder Dictionaries durchzulaufen, finden Sie in der offiziellen \href{https://docs.python.org/3/tutorial/datastructures.html#looping-techniques}{Python-Dokumentation}.
-\end{myremark}
+\clearpage
+% \begin{myremark}[Weitere Arten, Schleifen durchzulaufen]
+% 	Weitere Arten, Schleifen über Listen oder Dictionaries durchzulaufen, finden Sie in der offiziellen \href{https://docs.python.org/3/tutorial/datastructures.html#looping-techniques}{Python-Dokumentation}.
+% \end{myremark}

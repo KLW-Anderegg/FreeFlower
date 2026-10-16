@@ -1,151 +1,151 @@
-\chapter{Praktische Anwendungen}\label{ch:K08_Anwendung}
-\section{Kalorienverbrauch}
+% \chapter{Praktische Anwendungen}\label{ch:K08_Anwendung}
+% \section{Kalorienverbrauch}
 
-Folgende Beispiele sollen die meisten der bisher gelernten Programmier-Konzepte konkret veranschaulichen. Stellen Sie sich vor, Sie sind SportlerIn und möchten Ihren Kalorienbedarf berechnen, um sich für auf einen kommenden Wettkampf optimal zu ernähren. Hierzu wollen Sie zunächst Ihren theoretischen täglichen Kalorienbedarf berechnen. Der theoretische tägliche Kalorienbedarf berechnet sich wie folgt:
-\begin{enumerate}
-	\item Ihr \textbf{Grundumsatz} (englisch \gls{BMR}): Dies ist ihr Grundbedarf, also die Anzahl Kilokalorien, welche Sie theoretisch benötigen, falls Sie sich gar nicht bewegen.
-	\item Ihr \textbf{Leistungsumsatz}, d.h., zusätzliche Energie, die Sie bei Aktivitäten wie Spazieren, Radfahren, Joggen usw. verbrennen.
-\end{enumerate}
+% Folgende Beispiele sollen die meisten der bisher gelernten Programmier-Konzepte konkret veranschaulichen. Stellen Sie sich vor, Sie sind SportlerIn und möchten Ihren Kalorienbedarf berechnen, um sich für auf einen kommenden Wettkampf optimal zu ernähren. Hierzu wollen Sie zunächst Ihren theoretischen täglichen Kalorienbedarf berechnen. Der theoretische tägliche Kalorienbedarf berechnet sich wie folgt:
+% \begin{enumerate}
+% 	\item Ihr \textbf{Grundumsatz} (englisch \gls{BMR}): Dies ist ihr Grundbedarf, also die Anzahl Kilokalorien, welche Sie theoretisch benötigen, falls Sie sich gar nicht bewegen.
+% 	\item Ihr \textbf{Leistungsumsatz}, d.h., zusätzliche Energie, die Sie bei Aktivitäten wie Spazieren, Radfahren, Joggen usw. verbrennen.
+% \end{enumerate}
 
-Beide Komponenten sind schwierig abzuschätzen. Sie möchten jedoch eine erste Einschätzung Ihrer \gls{BMR} haben, indem sie einige bekannte Formeln auf sich selber anwenden und diese vergleichen.
+% Beide Komponenten sind schwierig abzuschätzen. Sie möchten jedoch eine erste Einschätzung Ihrer \gls{BMR} haben, indem sie einige bekannte Formeln auf sich selber anwenden und diese vergleichen.
 
-\begin{myexercise}\label{ex:bmr-simple}
-	Schreiben Sie eine Python-Funktion, um den Grundumsatz anhand der \textbf{Harris-Benedict-Formel} zu berechnen und geben Sie das Resultat per \lstinline|return| zurück.
-	\begin{enumerate}
-		\item Für Männer:
-		      \begin{align*}
-			      \text{BMR} = & 88.362 +                                   \\
-			                   & (13.397 \times \text{Gewicht in kg}) +     \\
-			                   & (4.799 \times \text{Körpergrösse in cm}) - \\
-			                   & (5.677 \times \text{Alter in Jahren})
-		      \end{align*}
-		\item Für Frauen:
-		      \begin{align*}
-			      \text{BMR} = & 447.593  +                                 \\
-			                   & (9.247 \times \text{Gewicht in kg}) +      \\
-			                   & (3.098 \times \text{Körpergrösse in cm}) - \\
-			                   & (4.330 \times \text{Alter in Jahren})
-		      \end{align*}
-	\end{enumerate}
-	\begin{myanswer} %
-		\lstinputlisting[language=Python,caption=\texttt{grundumsatz.py},label=listing:grundumsatz]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/grundumsatz.py}
-	\end{myanswer}
-\end{myexercise}
+% \begin{myexercise}\label{ex:bmr-simple}
+% 	Schreiben Sie eine Python-Funktion, um den Grundumsatz anhand der \textbf{Harris-Benedict-Formel} zu berechnen und geben Sie das Resultat per \lstinline|return| zurück.
+% 	\begin{enumerate}
+% 		\item Für Männer:
+% 		      \begin{align*}
+% 			      \text{BMR} = & 88.362 +                                   \\
+% 			                   & (13.397 \times \text{Gewicht in kg}) +     \\
+% 			                   & (4.799 \times \text{Körpergrösse in cm}) - \\
+% 			                   & (5.677 \times \text{Alter in Jahren})
+% 		      \end{align*}
+% 		\item Für Frauen:
+% 		      \begin{align*}
+% 			      \text{BMR} = & 447.593  +                                 \\
+% 			                   & (9.247 \times \text{Gewicht in kg}) +      \\
+% 			                   & (3.098 \times \text{Körpergrösse in cm}) - \\
+% 			                   & (4.330 \times \text{Alter in Jahren})
+% 		      \end{align*}
+% 	\end{enumerate}
+% 	\begin{myanswer} %
+% 		\lstinputlisting[language=Python,caption=\texttt{grundumsatz.py},label=listing:grundumsatz]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/grundumsatz.py}
+% 	\end{myanswer}
+% \end{myexercise}
 
-Wir haben nun eine erste, grobe Einschätzung des \gls{BMR}. Allerdings gibt es auch noch weitere mögliche Formeln, mithilfe denen der \gls{BMR} berechnet werden kann. Diese möchten wir nun ebenfalls berechnen, um die unterschiedlichen Schätzungen des \gls{BMR} anhand der verschiedenen Methoden zu vergleichen.
+% Wir haben nun eine erste, grobe Einschätzung des \gls{BMR}. Allerdings gibt es auch noch weitere mögliche Formeln, mithilfe denen der \gls{BMR} berechnet werden kann. Diese möchten wir nun ebenfalls berechnen, um die unterschiedlichen Schätzungen des \gls{BMR} anhand der verschiedenen Methoden zu vergleichen.
 
-\begin{myexercise}\label{ex:bmr}
-	Schreiben Sie zwei weitere Funktionen, um den \gls{BMR} anhand der \textbf{Mifflin-St-Jeor-Gleichung} sowie der \textbf{Katch-McArdle-Formel} zurückzugeben und berechnen Sie den Durchschnitt aller drei Formeln in einer weiteren Funktion.
-	\begin{enumerate}
-		\item \textbf{Mifflin-St-Jeor-Gleichung}:
-		      \begin{enumerate}
-			      \item Männer:
-			            \begin{align*}
-				            \text{BMR} & = 10 \times \text{Gewicht (kg)}        \\
-				                       & \quad + 6.25 \times \text{Grösse (cm)} \\
-				                       & \quad - 5 \times \text{Alter (Jahre)}  \\
-				                       & \quad + 5
-			            \end{align*}
-			      \item Frauen:
-			            \begin{align*}
-				            \text{BMR} & = 10 \times \text{Gewicht (kg)}        \\
-				                       & \quad + 6.25 \times \text{Grösse (cm)} \\
-				                       & \quad - 5 \times \text{Alter (Jahre)}  \\
-				                       & \quad - 161
-			            \end{align*}
-		      \end{enumerate}
-		\item \textbf{Katch-McArdle-Formel} (gleich für Männer sowie Frauen):
+% \begin{myexercise}\label{ex:bmr}
+% 	Schreiben Sie zwei weitere Funktionen, um den \gls{BMR} anhand der \textbf{Mifflin-St-Jeor-Gleichung} sowie der \textbf{Katch-McArdle-Formel} zurückzugeben und berechnen Sie den Durchschnitt aller drei Formeln in einer weiteren Funktion.
+% 	\begin{enumerate}
+% 		\item \textbf{Mifflin-St-Jeor-Gleichung}:
+% 		      \begin{enumerate}
+% 			      \item Männer:
+% 			            \begin{align*}
+% 				            \text{BMR} & = 10 \times \text{Gewicht (kg)}        \\
+% 				                       & \quad + 6.25 \times \text{Grösse (cm)} \\
+% 				                       & \quad - 5 \times \text{Alter (Jahre)}  \\
+% 				                       & \quad + 5
+% 			            \end{align*}
+% 			      \item Frauen:
+% 			            \begin{align*}
+% 				            \text{BMR} & = 10 \times \text{Gewicht (kg)}        \\
+% 				                       & \quad + 6.25 \times \text{Grösse (cm)} \\
+% 				                       & \quad - 5 \times \text{Alter (Jahre)}  \\
+% 				                       & \quad - 161
+% 			            \end{align*}
+% 		      \end{enumerate}
+% 		\item \textbf{Katch-McArdle-Formel} (gleich für Männer sowie Frauen):
 
-		      \begin{align*}
-			      \text{BMR} & = 370                                  \\
-			                 & \quad + (21.6 \times \text{FFM in kg})
-		      \end{align*}
-		      Wobei die fettfreie Masse (FFM) zuerst berechnet werden muss:
-		      \begin{align*}
-			      \text{FFM} & = \text{Körpergewicht (kg)}                \\
-			                 & \quad \times (1 - \text{Körperfettanteil})
-		      \end{align*}
+% 		      \begin{align*}
+% 			      \text{BMR} & = 370                                  \\
+% 			                 & \quad + (21.6 \times \text{FFM in kg})
+% 		      \end{align*}
+% 		      Wobei die fettfreie Masse (FFM) zuerst berechnet werden muss:
+% 		      \begin{align*}
+% 			      \text{FFM} & = \text{Körpergewicht (kg)}                \\
+% 			                 & \quad \times (1 - \text{Körperfettanteil})
+% 		      \end{align*}
 
-	\end{enumerate}
+% 	\end{enumerate}
 
-	\begin{myanswer} %
-		\lstinputlisting[language=Python,caption=\texttt{bmr.py},label=listing:bmr]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/bmr.py}
-	\end{myanswer}
-\end{myexercise}
+% 	\begin{myanswer} %
+% 		\lstinputlisting[language=Python,caption=\texttt{bmr.py},label=listing:bmr]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/bmr.py}
+% 	\end{myanswer}
+% \end{myexercise}
 
-Nun haben wir eine etwas verlässlichere Einschätzung unseres Grundumsatzes. Zum Grundumsatz können wir nun auch noch den Leistungsumsatz hinzufügen, um den gesamten theoretischen täglichen Energieumsatz in Kilokalorien zu berechnen.
+% Nun haben wir eine etwas verlässlichere Einschätzung unseres Grundumsatzes. Zum Grundumsatz können wir nun auch noch den Leistungsumsatz hinzufügen, um den gesamten theoretischen täglichen Energieumsatz in Kilokalorien zu berechnen.
 
-\begin{myexercise}\label{ex:leistungsumsatz}
-	Berechnen Sie Ihren Leistungsumsatz (durch Leistung benötigte Energie) anhand der Tabelle \ref{tab:kcal}.
+% \begin{myexercise}\label{ex:leistungsumsatz}
+% 	Berechnen Sie Ihren Leistungsumsatz (durch Leistung benötigte Energie) anhand der Tabelle \ref{tab:kcal}.
 
-	\begin{table}[H]
-		\centering
-		\begin{tabular}{c|*{10}{c}}
-			\textbf{Gewicht (kg)}    & 60   & 65   & 70   & 75   & 80   & 85   & 90   & 95   & 100  & 105  \\
-			\midrule\midrule
-			\textbf{Spazieren}       & 4.5  & 5.1  & 5.4  & 5.7  & 6.0  & 6.4  & 6.7  & 7.3  & 8.0  & 9.0  \\
-			\midrule
-			\textbf{Schnelles Gehen} & 5.5  & 6.3  & 7.0  & 7.5  & 8.0  & 8.6  & 9.5  & 10.0 & 10.6 & 11.3 \\
-			\midrule
-			\textbf{Fahrradfahren}   & 6.5  & 7.5  & 8.0  & 9.0  & 9.5  & 10.3 & 11.0 & 11.7 & 12.5 & 13.6 \\
-			\midrule
-			\textbf{Schwimmen}       & 8.0  & 9.2  & 10.0 & 10.8 & 11.5 & 12.5 & 13.7 & 14.4 & 15.4 & 16.5 \\
-			\midrule
-			\textbf{Rudern}          & 11.0 & 13.0 & 14.3 & 15.0 & 16.5 & 17.5 & 19.0 & 20.5 & 21.8 & 23.5 \\
-			\midrule
-			\textbf{Jogging}         & 13.0 & 14.5 & 16.0 & 17.5 & 19.0 & 20.0 & 22.0 & 23.5 & 24.5 & 26.5 \\
-			\midrule
-			\textbf{Laufen}          & 16.0 & 18.5 & 20.0 & 22.0 & 23.5 & 25.0 & 27.5 & 29.0 & 31.0 & 33.5 \\
-			\midrule
-			\textbf{Sprint}          & 19.0 & 21.5 & 24.0 & 26.0 & 28.0 & 30.0 & 32.5 & 34.7 & 35.6 & 39.0 \\
-		\end{tabular}
-		\caption{Kalorienverbrauch für unterschiedliche Aktivitäten, pro Minute, in Abhängigkeit des Körpergewichts}
-		\label{tab:kcal}
-	\end{table}
-	Wenn z.B. eine 80 kg schwere Person 1 Stunde lang rudert und 20 Minuten spaziert wären die Listen wie folgt:
-	\begin{lstlisting}
-		l_zeit = [60, 20] # Zeit in Minuten
-		l_kcal = [16.5, 6] # Kalorien pro Aktivität
-	\end{lstlisting}
-	Erstellen Sie zwei Listen:
-	\begin{enumerate}
-		\item Eine Liste für die Zeit, während der Sie täglich einer Aktivität nachgehen
-		\item Eine Liste mit dem Kalorienverbrauch pro Minute für jede dieser Aktivitäten
-	\end{enumerate}
+% 	\begin{table}[H]
+% 		\centering
+% 		\begin{tabular}{c|*{10}{c}}
+% 			\textbf{Gewicht (kg)}    & 60   & 65   & 70   & 75   & 80   & 85   & 90   & 95   & 100  & 105  \\
+% 			\midrule\midrule
+% 			\textbf{Spazieren}       & 4.5  & 5.1  & 5.4  & 5.7  & 6.0  & 6.4  & 6.7  & 7.3  & 8.0  & 9.0  \\
+% 			\midrule
+% 			\textbf{Schnelles Gehen} & 5.5  & 6.3  & 7.0  & 7.5  & 8.0  & 8.6  & 9.5  & 10.0 & 10.6 & 11.3 \\
+% 			\midrule
+% 			\textbf{Fahrradfahren}   & 6.5  & 7.5  & 8.0  & 9.0  & 9.5  & 10.3 & 11.0 & 11.7 & 12.5 & 13.6 \\
+% 			\midrule
+% 			\textbf{Schwimmen}       & 8.0  & 9.2  & 10.0 & 10.8 & 11.5 & 12.5 & 13.7 & 14.4 & 15.4 & 16.5 \\
+% 			\midrule
+% 			\textbf{Rudern}          & 11.0 & 13.0 & 14.3 & 15.0 & 16.5 & 17.5 & 19.0 & 20.5 & 21.8 & 23.5 \\
+% 			\midrule
+% 			\textbf{Jogging}         & 13.0 & 14.5 & 16.0 & 17.5 & 19.0 & 20.0 & 22.0 & 23.5 & 24.5 & 26.5 \\
+% 			\midrule
+% 			\textbf{Laufen}          & 16.0 & 18.5 & 20.0 & 22.0 & 23.5 & 25.0 & 27.5 & 29.0 & 31.0 & 33.5 \\
+% 			\midrule
+% 			\textbf{Sprint}          & 19.0 & 21.5 & 24.0 & 26.0 & 28.0 & 30.0 & 32.5 & 34.7 & 35.6 & 39.0 \\
+% 		\end{tabular}
+% 		\caption{Kalorienverbrauch für unterschiedliche Aktivitäten, pro Minute, in Abhängigkeit des Körpergewichts}
+% 		\label{tab:kcal}
+% 	\end{table}
+% 	Wenn z.B. eine 80 kg schwere Person 1 Stunde lang rudert und 20 Minuten spaziert wären die Listen wie folgt:
+% 	\begin{lstlisting}
+% 		l_zeit = [60, 20] # Zeit in Minuten
+% 		l_kcal = [16.5, 6] # Kalorien pro Aktivität
+% 	\end{lstlisting}
+% 	Erstellen Sie zwei Listen:
+% 	\begin{enumerate}
+% 		\item Eine Liste für die Zeit, während der Sie täglich einer Aktivität nachgehen
+% 		\item Eine Liste mit dem Kalorienverbrauch pro Minute für jede dieser Aktivitäten
+% 	\end{enumerate}
 
-	Schreiben Sie eine Python-Funktion \lstinline|berechne_leistungsumsatz|, um Ihren Leistungsumsatz zu berechnen. Das erwartete Resultat für das Beispiel hier wäre: \lstinline|1110| (= Summe von \lstinline|[990, 120]|). Das Resultat soll an das Hauptprogramm zurückgegeben und in einer Variable \texttt{kalorienverbrauch} gespeichert werden. %
-	\begin{myanswer} %
-		\lstinputlisting[language=Python,caption=\texttt{leistungsumsatz.py},label=listing:leistungsumsatz]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/leistungsumsatz.py}
-	\end{myanswer}
+% 	Schreiben Sie eine Python-Funktion \lstinline|berechne_leistungsumsatz|, um Ihren Leistungsumsatz zu berechnen. Das erwartete Resultat für das Beispiel hier wäre: \lstinline|1110| (= Summe von \lstinline|[990, 120]|). Das Resultat soll an das Hauptprogramm zurückgegeben und in einer Variable \texttt{kalorienverbrauch} gespeichert werden. %
+% 	\begin{myanswer} %
+% 		\lstinputlisting[language=Python,caption=\texttt{leistungsumsatz.py},label=listing:leistungsumsatz]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/leistungsumsatz.py}
+% 	\end{myanswer}
 
-\end{myexercise}
-%
-\begin{myexercise}
-	Schreiben Sie nun eine weitere Funktion, die Ihren gesamten Energieumsatz berechnet, als Summe der folgender Teile:
-	\begin{itemize}
-		\item \textbf{\gls{BMR}}, den Sie in \cref{ex:bmr} berechnet haben (Durchschnitt der drei Formeln)
-		\item \textbf{Leistungsumsatz}, den Sie in \cref{ex:leistungsumsatz} berechnet haben
-	\end{itemize}
-	Diese Funktion ist extrem kurz und umfässt nur eine einzige (neue) Zeile.
-	\begin{myanswer} %
-		Angenommen, die bisher geschriebenen Funktionen wurden in den Dateien \texttt{bmr.py} und \texttt{leistungsumsatz.py} gespeichert, so können Sie die Funktion \lstinline|total(bmr, leistungsumsatz)| wie folgt schreiben:
-		\lstinputlisting[language=Python,caption=\texttt{total.py},label=listing:total]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/total.py}
-	\end{myanswer}
-\end{myexercise}
-
-
+% \end{myexercise}
+% %
+% \begin{myexercise}
+% 	Schreiben Sie nun eine weitere Funktion, die Ihren gesamten Energieumsatz berechnet, als Summe der folgender Teile:
+% 	\begin{itemize}
+% 		\item \textbf{\gls{BMR}}, den Sie in \cref{ex:bmr} berechnet haben (Durchschnitt der drei Formeln)
+% 		\item \textbf{Leistungsumsatz}, den Sie in \cref{ex:leistungsumsatz} berechnet haben
+% 	\end{itemize}
+% 	Diese Funktion ist extrem kurz und umfässt nur eine einzige (neue) Zeile.
+% 	\begin{myanswer} %
+% 		Angenommen, die bisher geschriebenen Funktionen wurden in den Dateien \texttt{bmr.py} und \texttt{leistungsumsatz.py} gespeichert, so können Sie die Funktion \lstinline|total(bmr, leistungsumsatz)| wie folgt schreiben:
+% 		\lstinputlisting[language=Python,caption=\texttt{total.py},label=listing:total]{Grundlagen_Info/00_Programmieren/Skript/Code/K08_Anwendungen/bmr_functions/total.py}
+% 	\end{myanswer}
+% \end{myexercise}
 
 
-\begin{mycaution}
-	Die Zahlen zu Energiebedarf und Kalorien, die Sie im Rahmen dieser Übungen berechnet haben, sollten Sie mit Vorsicht geniessen, aus folgenden Gründen:
-	\begin{itemize}
-		\item Ihr realer Energiebedarf kann signifikant von Ihrem berechneten Energiebedarf abweichen. Viele weitere Faktoren, die nicht in den Formeln enthalten sind, können diesen beeinflussen, beispielsweise Ihre Köpertemperatur, Ihre Fitness, Ihre Muskelmasse, sowie Ihre \gls{NEAT}, wobei Letzteres Energie bezeichnet, die Sie durch Bewegungen, die nicht Sport sind, verbrauchen (beispielsweise durch \enquote{Zappeln} aber auch kurze Spaziergänge und alltägliche Aktivitäten).
-		\item Sie sollten sich bezüglich konsumierter Kalorien vor Augen halten, dass \enquote{zu viele} konsumierte Kalorien nicht automatisch mit einer Gewichtszunahme verbunden sind. In einem Kilo Körperfett stecken ca. 8000 Kilokalorien, wobei der Köper über verschiedene Mechanismen verfügt, um ein stabiles Körpergewicht zu halten, etwa die Erhöhung oder Senkung der Körpertemperatur im Falle eines kurzfristigen Kalorien-Überschusses, respektive -Defizits. Allerdings kann es interessant sein, zu wissen, dass einige, nicht sehr sättigende Lebensmittel besonders viele Kalorien enthalten --- wie beispielsweise hochverarbeitete Snacks oder Süssgetränke.
-	\end{itemize}
-\end{mycaution}
 
 
-\clearpage
+% \begin{mycaution}
+% 	Die Zahlen zu Energiebedarf und Kalorien, die Sie im Rahmen dieser Übungen berechnet haben, sollten Sie mit Vorsicht geniessen, aus folgenden Gründen:
+% 	\begin{itemize}
+% 		\item Ihr realer Energiebedarf kann signifikant von Ihrem berechneten Energiebedarf abweichen. Viele weitere Faktoren, die nicht in den Formeln enthalten sind, können diesen beeinflussen, beispielsweise Ihre Köpertemperatur, Ihre Fitness, Ihre Muskelmasse, sowie Ihre \gls{NEAT}, wobei Letzteres Energie bezeichnet, die Sie durch Bewegungen, die nicht Sport sind, verbrauchen (beispielsweise durch \enquote{Zappeln} aber auch kurze Spaziergänge und alltägliche Aktivitäten).
+% 		\item Sie sollten sich bezüglich konsumierter Kalorien vor Augen halten, dass \enquote{zu viele} konsumierte Kalorien nicht automatisch mit einer Gewichtszunahme verbunden sind. In einem Kilo Körperfett stecken ca. 8000 Kilokalorien, wobei der Köper über verschiedene Mechanismen verfügt, um ein stabiles Körpergewicht zu halten, etwa die Erhöhung oder Senkung der Körpertemperatur im Falle eines kurzfristigen Kalorien-Überschusses, respektive -Defizits. Allerdings kann es interessant sein, zu wissen, dass einige, nicht sehr sättigende Lebensmittel besonders viele Kalorien enthalten --- wie beispielsweise hochverarbeitete Snacks oder Süssgetränke.
+% 	\end{itemize}
+% \end{mycaution}
+
+
+% \clearpage
 \section{Bilder Bearbeiten (Anwendung von Listen und Schleifen)}
 In diesem Abschnitt werden wir uns mit der Bearbeitung von Bildern in Python beschäftigen.
 Sie lernen, wie Sie auf einzelne Bildpunkte (Pixel) zugreifen und deren Farbwerte gezielt verändern können.
@@ -153,48 +153,36 @@ Schritt für Schritt werden Sie verschiedene Effekte wie Invertierungen, Filter 
 Diese Übungen bieten eine praktische Anwendung für viele der bisher gelernten Konzepte wie Schleifen und Listen in einem visuell ansprechenden Kontext.
 
 
-\subsection{Schritt-für-Schritt-Anleitung}
+% \subsection{Schritt-für-Schritt-Anleitung}
 
-\subsubsection*{Schritt 1: Umgebung erstellen}
-Dies erstellt einen versteckten, isolierten "`Sandbox"'-Ordner namens \texttt{.venv} in Ihrem Projektverzeichnis, in dem alle Bibliotheken gespeichert werden.
-\begin{lstlisting}[language=bash]
-# Mac / Linux:
-python3 -m venv .venv
+% \subsubsection*{Schritt 1: Umgebung erstellen}
+% Dies erstellt einen versteckten, isolierten ```Sandbox'''-Ordner namens \texttt{.venv} in Ihrem Projektverzeichnis, in dem alle Bibliotheken gespeichert werden.
+% \begin{lstlisting}[language=bash]
+% # Mac / Linux:
+% python3 -m venv .venv
 
-# Windows:
-python -m venv .venv
-\end{lstlisting}
+% # Windows:
+% python -m venv .venv
+% \end{lstlisting}
 
-\subsubsection*{Schritt 2: Umgebung aktivieren}
-Dies weist Ihren Computer an, diese spezifische Sandbox zu nutzen. \textbf{Wichtige Überprüfung:} Sie müssen \texttt{(.venv)} ganz am Anfang Ihrer Terminal-Befehlszeile sehen.
-\begin{lstlisting}[language=bash]
-# Mac / Linux:
-source .venv/bin/activate
+% \subsubsection*{Schritt 2: Umgebung aktivieren}
+% Dies weist Ihren Computer an, diese spezifische Sandbox zu nutzen. \textbf{Wichtige Überprüfung:} Sie müssen \texttt{(.venv)} ganz am Anfang Ihrer Terminal-Befehlszeile sehen.
+% \begin{lstlisting}[language=bash]
+% # Mac / Linux:
+% source .venv/bin/activate
 
-# Windows (PowerShell - Standard):
-.venv\Scripts\Activate.ps1
+% # Windows (PowerShell - Standard):
+% .venv\Scripts\Activate.ps1
 
-# Windows (Eingabeaufforderung / CMD - Alternative):
-.venv\Scripts\activate.bat
-\end{lstlisting}
+% # Windows (Eingabeaufforderung / CMD - Alternative):
+% .venv\Scripts\activate.bat
+% \end{lstlisting}
 
-\subsubsection*{Schritt 3: Bibliotheken installieren}
-Da Sie sich nun sicher innerhalb der virtuellen Umgebung befinden, können Sie die benötigten Kurs-Tools fehlerfrei installieren:
-\begin{lstlisting}[language=bash]
-pip install numpy matplotlib pillow
-\end{lstlisting}
+% \subsubsection*{Schritt 3: Bibliotheken installieren}
+% Da Sie sich nun sicher innerhalb der virtuellen Umgebung befinden, können Sie die benötigten Kurs-Tools fehlerfrei installieren:
 
-\vspace{1.5em}
-
-% --- Windows Troubleshooting Box ---
-\begin{tcolorbox}[title=\textbf{⚠️ Windows-Fehlerbehebung (Skript-Ausführungsfehler)}, fonttitle=\bfseries]
-Falls Studierende unter Windows eine rote Fehlermeldung erhalten (z.\,B. \textit{"...kann nicht geladen werden, da die Ausführung von Skripten auf diesem System deaktiviert ist"}), muss lediglich dieser Befehl \textbf{einmalig} in der PowerShell ausgeführt und Schritt 2 wiederholt werden:
-\begin{lstlisting}[language=bash, backgroundcolor=\color{white}, frame=none]
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-\end{lstlisting}
-\end{tcolorbox}
-
-\subsubsection*{Schritt 4: VS Code starten und Python-File öffnen}
+\subsection{Vorbereitung}
+\subsubsection*{Ordner erstellen und VS Code starten}
 \begin{enumerate}
 	\item Erstellen Sie auf Ihrem eigenen Rechner einen neuen Ordner \emoji{file-folder} mit dem Namen \texttt{Bilder\_Bearbeiten}.
 	\item Laden Sie die Datei \texttt{dateien.zip} von Moodle herunter, und zwar so, dass die Datei \texttt{dateien.zip} in dem neu angelegten Ordner \texttt{Bilder\_Bearbeiten} abgespeichert ist.
@@ -203,23 +191,53 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 		      \item[Windows:] Rechtsklick auf \texttt{dateien.zip} und dann \texttt{Alle extrahieren}.
 		      \item[macOS:] Doppelklick auf \texttt{datein.zip}
 	      \end{description}
-	\item Öffnen Sie das Python-File \texttt{bilder\_template.py} in \texttt{VS Code}.
-	\item In diesem Python-File \texttt{bilder\_template.py} ist eine Vorlage (Template) zu allen nachfolgenden Aufgaben bereits gegeben. Bitte lösen Sie die Aufgaben, indem Sie diese Vorlage Schritt für Schritt durch Ihren Python-Code ergänzen.
+	\item Öffnen Sie den Ordner \texttt{Bilder\_Bearbeiten} in \texttt{VS Code}.
+	\item In diesem Ordner finden Sie die Datei \texttt{bilder\_template.py}. Darin ist eine Vorlage (Template) zu allen nachfolgenden Aufgaben bereits gegeben. Bitte lösen Sie die Aufgaben, indem Sie diese Vorlage Schritt für Schritt durch Ihren Python-Code ergänzen.
 \end{enumerate}
+
+\subsubsection*{Bibliotheken installieren}
+Für die Programme in diesem Kapitel benötigen wir drei Python-Bibliotheken: Numpy, Matplotlib und Pillow. Zur Installation dieser Bibliotheken können Sie die folgendne Befehle in das Terminal in VS-Code eingeben. (Möglicherweise haben Sie das eine oder andere Paket bereits installiert.)
+\begin{lstlisting}[language=bash]
+pip install numpy
+pip install matplotlib
+pip install pillow
+\end{lstlisting}
+
+
+
+\vspace{1.5em}
+
+% --- Windows Troubleshooting Box ---
+\begin{tcolorbox}[title=\textbf{⚠️ Windows-Fehlerbehebung (Skript-Ausführungsfehler)}, fonttitle=\bfseries]
+	Falls Sie unter Windows eine rote Fehlermeldung erhalten (z.\,B. \textit{``...kann nicht geladen werden, da die Ausführung von Skripten auf diesem System deaktiviert ist''}), muss lediglich dieser Befehl \textbf{einmalig} in der PowerShell ausgeführt und die Installation wiederholt werden:
+	\begin{lstlisting}[language=bash, backgroundcolor=\color{white}, frame=none]
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsubsection*{Test}
+Fügen Sie am Ende des Datei \texttt{bilder\_template.py} die folgenden Zeilen ein und lassen Sie das Programm laufen.
+
+\lstinline|pixel_list = ih.get_1d_bw('dateien/effi_bw.jpg')| \newline
+\lstinline|print(pixel_list)|
+
+
+
 
 \subsection{Aufgaben zur Bearbeitung von Bildern}
 \subsubsection{Schwarz-Weiss-Bilder}
 \begin{myexercise}[\textbf{Anzahl der schwarzen Pixel in einem gegeben Bild zählen}]
-	Schreiben Sie eine Python-Funktion \lstinline|count_black_pixels(filename)|, welche das ein Schwarz-Weiss-Bild mit dem Dateinamen \lstinline|filename| als Argument erhält und die Anzahl der schwarzen Pixel in diesem Bild zählt und diese Anzahl mit \lstinline|return| zurück gibt. Betrachten Sie dazu unbedingt die Vorlage.
+	In der Vorlage finden Sie die Funktion \lstinline|count_black_pixels(filename)|, welche ein Schwarz-Weiss-Bild mit dem Dateiname \lstinline|filename| als Argument erhält, die Anzahl der schwarzen Pixel in diesem Bild zählt und diese Anzahl mit \lstinline|return| zurück gibt.
+
+	Verwenden Sie diese Fukntion, um die Anzahl schwazen Pixel im Bild \texttt{effi\_bw} zu zählen.
 	\begin{myanswer}
 		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
 	\end{myanswer}
 \end{myexercise}
 
 \begin{myexercise}[\textbf{Schwarz-Weiss-Bild invertieren}]
-	Schreiben Sie eine Python-Funktion \lstinline|invert_black_white_image(filename)|, welche ein Schwarz-Weiss-Bild mit dem Dateinamen \lstinline|filename| als Argument erhält und dieses Bild invertiert: Alle weissen Pixel (Pixel mit Wert $1$) sollen schwarz werden und alle schwarzen Pixel (Pixel mit Wert $0$) sollen weiss werden.
+	Ergänzen Sie die Python-Funktion \lstinline|invert_black_white_image(filename)|, welche ein Schwarz-Weiss-Bild mit dem Dateinamen \lstinline|filename| als Argument erhält und dieses Bild invertiert: Alle weissen Pixel (Pixel mit Wert \(1\)) sollen schwarz werden und alle schwarzen Pixel (Pixel mit Wert \(0\)) sollen weiss werden.
 
-	Stellen Sie schliesslich das originale Bild und das invertierte Bild nebeneinander dar.
 	\begin{myanswer}
 		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
 	\end{myanswer}
@@ -232,6 +250,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 		\lstinline|random_black_white_image(400, 600)|
 	\end{center}
 	sollte dann beispielsweise ein Schwarz-Weiss-Bild der Breite 400 Pixel und Höhe 600 Pixel generieren, wobei jeder Pixelwert (0 oder 1) zufällig gewählt wurde.
+
+	Für die Zufallszahl können Sie die Funktion \lstinline|random.randint(0,1)| verwenden.
 	\begin{myanswer}
 		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
 	\end{myanswer}
@@ -248,7 +268,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 \end{myexercise}
 
 \begin{myexercise}[Nur 8 verschiedene Graustufen]
-	Schreiben Sie eine Python-Funktion \lstinline|only_8_shades_of_gray(filename)|, welche ein Graustufenbild (256 Stufen) mit dem Dateinamen \lstinline|filename| als Argument erhält und mit nur 8 (anstelle von 256) verschiedenen Graustufen darstellt: Die Pixel mit Werten in $\lrc{0, 1, 2, \ldots, 31}$ sollen alle durch den Graustufenwert $0$ (schwarz) dargestellt werden, die Pixel mit Werten in $\lrc{32,33,34,\ldots, 63}$ durch den Wert $32$ und so weiter. Es ergeben sich also 8 Gruppen (Mengen), welche je 32 verschiedene Graustufenwerte durch denselben Graustufenwert darstellen.
+	Schreiben Sie eine Python-Funktion \lstinline|only_8_shades_of_gray(filename)|, welche ein Graustufenbild (256 Stufen) mit dem Dateinamen \lstinline|filename| als Argument erhält und mit nur 8 (anstelle von 256) verschiedenen Graustufen darstellt: Die Pixel mit Werten in \(\lrc{0, 1, 2, \ldots, 31}\) sollen alle durch den Graustufenwert \(0\) (schwarz) dargestellt werden, die Pixel mit Werten in \(\lrc{32,33,34,\ldots, 63}\) durch den Wert \(32\) und so weiter. Es ergeben sich also 8 Gruppen (Mengen), welche je 32 verschiedene Graustufenwerte durch denselben Graustufenwert darstellen.
 
 	Stellen Sie das originale Bild und das transformierte Bild nebeneinander dar.
 	% \begin{figure}[H]
@@ -262,8 +282,14 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 	\end{myanswer}
 \end{myexercise}
 
-\begin{myexercise}[\textbf{Vertikale Streifen}]
-	Schreiben Sie ein Python-Funktion \lstinline|vertical_stripes(filename)|, welche ein Graustufenbild mit dem Dateinamen \lstinline|filename| als Argument erhält. Die Funktion soll \enquote{vertikale Streifen} in gleichmässigen Abständen durch das Bild legen.
+\begin{mychallenge}[\textbf{Vertikale Streifen}]
+	Schreiben Sie ein Python-Funktion \lstinline|vertical_stripes(filename)|, welche ein Graustufenbild mit dem Dateinamen \lstinline|filename| als Argument erhält. Die Funktion soll schwarze \enquote{vertikale Streifen} in gleichmässigen Abständen durch das Bild legen.
+
+	Tipps:
+	\begin{itemize}
+		\item Als erstes sollten Sie aus dem Pixelindex berechnen, in welcher Spalte (0 bis Breite-1) sich der Pixel befindet. Verwenden Sie die Modulo-Operation \lstinline|%|.
+		\item Als nächstes sollten Sie herausfinden, wie man aufgrund der Spalte entscheiden kann, ob der Pixel auf dem streifen liegt. Hier kann eine Skizze helfen. Ausserdem kann die Modulo-Operation \lstinline|%| wieder hilfreich sein.
+	\end{itemize}
 	% Ein Beispiel dieser Transformation ist in \cref{fig:streifen} gegeben. Hier haben wir vertikale Streifen mit einer Breite von 2 Pixeln gewählt. Der Abstand (Anfang zu Anfang) der Streifen ist 7 Pixel (also 5 unveränderte Pixel zwischen Ende eines Streifens und dem Anfang des nächsten Streifens).
 	% \begin{figure}[H]
 	% 	\centering
@@ -274,15 +300,15 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 	\begin{myanswer}
 		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
 	\end{myanswer}
-\end{myexercise}
+\end{mychallenge}
 
 \subsubsection{RGB-Bilder}
 \begin{myexercise}[\textbf{Grünanteil erhöhen}]
-	Schreiben Sie ein Python-Funktion \lstinline|increase_green(filename)|, welche ein RGB-Bild mit dem Dateinamen \lstinline|filename| als Argument erhält und den Grünanteil dieses RGB-Bilds um 20 Prozent verstärkt / erhöht. Es ist kein Problem, wenn ein Wert bei der Erhöhung den Wert $255$ übersteigt: Die Image-Library interpretiert jeden Wert $\geq 255$ als $255$.
+	Schreiben Sie ein Python-Funktion \lstinline|increase_green(filename)|, welche ein RGB-Bild mit dem Dateinamen \lstinline|filename| als Argument erhält und den Grünanteil dieses RGB-Bilds um 20 Prozent verstärkt / erhöht. Es ist kein Problem, wenn ein Wert bei der Erhöhung den Wert \(255\) übersteigt: Die Image-Library interpretiert jeden Wert \(\geq 255\) als \(255\).
 
 	Stellen Sie das originale Bild und das transformierte Bild nebeneinander dar.
 
-	(Bei Bildern mit Grünanteil von $> 212$ wird die Erhöhung natürlich de facto weniger als 20 Prozent betragen.)
+	(Bei Bildern mit Grünanteil von \(> 212\) wird die Erhöhung natürlich de facto weniger als 20 Prozent betragen.)
 	\begin{myanswer}
 		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
 	\end{myanswer}
@@ -305,6 +331,23 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 	\end{myanswer}
 \end{myexercise}
 
+\begin{myexercise}[\textbf{Farbsättigung}]
+	Ähnlich wie beim Sepia-Filter kann man durch Veränderung der Farbwerte von Pixel auch die Farbsättigung erhöhen. Gehen Sie dafür wie folgt vor:
+	\begin{enumerate}
+		\item Berechnen Sie für jeden Pixel den Mittelwert der drei Farbwerte: \( m = (r+g+b) / 3 \)
+		\item Die neuen Farbwerte \(r', g'\) und \( b' \) werden nun so berechnet, dass deren Abstand zum Mittelwert \( m \) um einen Faktor \(k \) (Zum Beispiel \( k = 1.5 \) ) erhöht wird:
+		      \begin{align*}
+			      r' & = m + k\cdot (r-m) \\
+			      g' & = m + k\cdot (g-m) \\
+			      b' & = m + k\cdot (b-m)
+		      \end{align*}
+
+
+	\end{enumerate}
+
+	Schreiben Sie ein Python-Funktion \lstinline|saettingung_filter(filename)|, welche ein RGB-Bild mit dem Dateinamen \lstinline|filename| als Argument erhält und den Sättigungsfilter auf das Bild anwendet.
+\end{myexercise}
+
 \subsubsection{Weitere Aufgaben}
 \begin{myexercise}[\textbf{Primzahlen als Pixel}]
 	Schreiben Sie eine Python-Funktion \lstinline|is_prime(number)|, welche für eine gegebene natürliche Zahl \lstinline|number| entscheidet, ob \lstinline|number| eine Primzahl ist (\lstinline|return True|) oder nicht (\lstinline|return False|).
@@ -318,22 +361,19 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
         is_prime(91) # return False
 	\end{lstlisting}
 
-	Erstellen Sie nun eine leere Liste. Diese Liste soll am Ende ein Schwarz-Weiss-Bild von $200\times 200$ Pixeln kodieren und somit eine Länge von $40000$ haben. Der $k$-te Eintrag der Liste für
+	Erstellen Sie nun eine leere Liste. Diese Liste soll am Ende ein Schwarz-Weiss-Bild von \(200\times 200\) Pixeln kodieren und somit eine Länge von \(40000\) haben. Der \(k\)-te Eintrag der Liste für
 	\begin{align*}
 		k \in\lrc{0, 1, 2, \ldots, 39999}
 	\end{align*}
-	soll $0$ (schwarz) sein, falls $k$ eine Primzahl ist und $1$ (weiss) sonst.
+	soll \(0\) (schwarz) sein, falls \(k\) eine Primzahl ist und \(1\) (weiss) sonst.
 
 	\begin{myanswer}
 		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
 	\end{myanswer}
 \end{myexercise}
 
-\begin{myexercise}[\textbf{Eigene Aufgaben}]
-	Erstellen Sie eigene interessante Aufgaben. Falls Sie eine besonders kreative Aufgabe entwickelt haben, senden Sie mir diese bitte per Mail.
-	\begin{myanswer}
-		Diese Musterlösung finden Sie in \cref{sec:K08_sol}.
-	\end{myanswer}
+\begin{myexercise}[\textbf{Eigene Filter}]
+	Erstellen Sie Analog eigene Bildfilter, um RGB-Bilder zu verändern.
 \end{myexercise}
 
 
