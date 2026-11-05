@@ -181,6 +181,22 @@ setLED(0)
 \end{myremark}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Der fahrende Roboter}
 
 Die Bibliothek \texttt{mbrobot} stellt verschiedene Befehle
@@ -696,6 +712,29 @@ for _ in range(3):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Sensoren}
 
 Sensoren sind aus unserem Alltag nicht mehr wegzudenken und kommen
@@ -1181,7 +1220,16 @@ while True:
 
 
 
+\begin{myremark}
+    Wenn Sie Ihrem Roboter mehr Leben einhauchen möchten\dots
 
+    Sie können Steuern, welche Bilder auf dem Display des Microbits angezeigt werden sollen. Dazu benötigen Sie die Funktion \texttt{display.show()} aus dem Modul \texttt{microbit}. Einige Beispiele für Bilder sind schon vorgefertigt. Der folgende Code zeigt, wie Sie ein Herz auf dem Display anzeigen können:
+    \begin{lstlisting}
+from microbit import *
+display.show(Image.HEART)
+    \end{lstlisting}
+    Weitere vorgefertigte Bilder finden Sie hier: \href{https://www.python-online.ch/en/robotik/mr/mbrobotdoc/}{Python-Online}.
+\end{myremark}
 
 
 
