@@ -1219,6 +1219,83 @@ while True:
 \end{myexercise}
 
 
+\begin{myexercise}
+    \textbf{Ein Zielobjekt suchen und anfahren}
+
+    Das folgende Programm lässt den Roboter nach einem
+    Zielobjekt (\emph{Target}) suchen. Dazu dreht er sich
+    schrittweise nach rechts und misst dabei mit seinem
+    Ultraschallsensor die Distanz zu Objekten in seiner
+    Umgebung. Sobald er ein Objekt in weniger als
+    \(\SI{40}{\centi\meter}\) Entfernung erkennt,
+    dreht er sich noch etwas weiter und beendet die Suche.
+    Anschliessend fährt er vorwärts.
+
+    Die ersten beiden Zeilen konfigurieren das Zielobjekt
+    für die Simulation. Mit \texttt{mesh} wird dessen
+    Form festgelegt, während \texttt{RobotContext.useTarget()}
+    das Zielobjekt im Simulator platziert.
+
+    \begin{lstlisting}[language=Python]
+from mbrobot import *
+
+mesh = [(50,0), (25,43), (-25,43),
+        (-50,0), (-25,-43), (25,-43)]
+RobotContext.useTarget("sprites/redtarget.gif",
+                       mesh, 400, 400)
+
+def searchTarget():
+    while True:
+        right()
+        delay(50)
+        dist = getDistance()
+        print(dist)
+        if dist < 40:
+            right()
+            delay(500)
+            break
+
+setSpeed(10)
+searchTarget()
+forward()
+    \end{lstlisting}
+
+    \textbf{Auftrag:}
+
+    Ergänzen Sie das Programm so, dass der Roboter nach
+    dem Auffinden des Zielobjekts nicht einfach
+    ununterbrochen vorwärtsfährt, sondern in regelmässigen
+    Abständen die Distanz zum Zielobjekt misst.
+
+    Sobald die gemessene Distanz kleiner als
+    \(\SI{10}{\centi\meter}\) ist, soll der Roboter
+    anhalten und das Programm beenden.
+
+    \begin{myanswer}
+        Die letzten beiden Zeilen werden durch
+        folgende Befehle ersetzt:
+
+        \begin{lstlisting}[language=Python]
+setSpeed(10)
+searchTarget()
+forward()
+
+while True:
+    dist = getDistance()
+    if dist < 10:
+        stop()
+        break
+    delay(100)
+        \end{lstlisting}
+
+        Der Roboter misst alle 100 Millisekunden erneut
+        die Distanz zum Zielobjekt. Solange diese mindestens
+        10 cm beträgt, fährt er weiter. Sobald die
+        Distanz kleiner als 10 cm ist, hält er an.
+        Mit \texttt{break} wird die Schleife beendet.
+    \end{myanswer}
+\end{myexercise}
+
 
 \begin{myremark}
     Wenn Sie Ihrem Roboter mehr Leben einhauchen möchten\dots
@@ -1310,81 +1387,90 @@ while True:
 
 
 
-\begin{myexample}
-    \textbf{Einer Linie mit zwei Sensoren folgen}
+% \begin{myexample}
+%     \textbf{Einer Linie mit zwei Sensoren folgen}
 
-    Im folgenden Programm werden beide Infrarotsensoren
-    verwendet, um den Roboter einer schwarzen Linie auf
-    hellem Untergrund folgen zu lassen. Durch die Verwendung
-    von zwei Sensoren kann der Roboter erkennen, ob er sich
-    zu weit links oder rechts von der Linie befindet,
-    und seine Fahrtrichtung entsprechend korrigieren.
+%     Im folgenden Programm werden beide Infrarotsensoren
+%     verwendet, um den Roboter einer schwarzen Linie auf
+%     hellem Untergrund folgen zu lassen. Durch die Verwendung
+%     von zwei Sensoren kann der Roboter erkennen, ob er sich
+%     zu weit links oder rechts von der Linie befindet,
+%     und seine Fahrtrichtung entsprechend korrigieren.
 
+%     \begin{lstlisting}[language=Python]
+% from mbrobot import *
+
+% RobotContext.useBackground("sprites/trail.gif")
+% RobotContext.setStartPosition(250, 250)
+
+% setSpeed(10)
+
+% while True:
+%     vL = irLeft.read_digital()
+%     vR = irRight.read_digital()
+%     if vL == 0 and vR == 0:
+%         forward()
+%     elif vL == 1 and vR == 0:
+%         rightArc(0.1)
+%     elif vL == 0 and vR == 1:
+%         leftArc(0.1)
+%     delay(100)
+%     \end{lstlisting}
+
+%     Die beiden Befehle \texttt{RobotContext.useBackground()}
+%     und \texttt{RobotContext.setStartPosition()} dienen
+%     ausschliesslich der Simulation. Sie legen das Hintergrundbild
+%     und die Startposition des Roboters im Simulator fest.
+%     Auf dem echten Roboter haben sie keine Wirkung.
+
+%     Die Befehle \texttt{irLeft.read\_digital()} und
+%     \texttt{irRight.read\_digital()} lesen die beiden
+%     Infrarotsensoren aus. Dabei bedeutet der Wert
+%     \texttt{0}, dass eine dunkle Fläche erkannt wird,
+%     und der Wert \texttt{1}, dass eine helle Fläche
+%     erkannt wird.
+
+%     Je nach Kombination der beiden Sensorwerte
+%     reagiert der Roboter unterschiedlich:
+%     \begin{itemize}
+%         \item \texttt{vL == 0} und \texttt{vR == 0}:
+%               Der Roboter fährt geradeaus.
+%         \item \texttt{vL == 1} und \texttt{vR == 0}:
+%               Der Roboter fährt einen engen Rechtsbogen.
+%         \item \texttt{vL == 0} und \texttt{vR == 1}:
+%               Der Roboter fährt einen engen Linksbogen.
+%     \end{itemize}
+
+%     Sind beide Sensorwerte gleich \texttt{1}, wird
+%     kein neuer Bewegungsbefehl ausgeführt. Der Roboter
+%     behält dann seinen bisherigen Bewegungszustand bei.
+
+%     \textbf{Probieren Sie das Programm aus:}
+%     \begin{enumerate}
+%         \item Führen Sie das Programm zunächst im Simulator
+%               von WebTigerPython aus und beobachten Sie,
+%               wie der Roboter der schwarzen Linie folgt.
+
+%         \item Übertragen Sie das Programm anschliessend
+%               auf den echten Roboter. Verwenden Sie dazu
+%               die bereitgestellte Vorlage mit einer
+%               schwarzen Linie und platzieren Sie den
+%               Roboter so, dass beide Infrarotsensoren
+%               die Linie erkennen.
+
+%     \end{enumerate}
+% \end{myexample}
+
+\begin{myexercise}
+    Programmieren Sie den Roboter so, dass er einer schwarzen Linie auf hellem Untergrund folgt. Verwenden Sie dazu beide Infrarotsensoren und korrigieren Sie die Fahrtrichtung, wenn der Roboter die Linie verlässt.
+
+    Für den Simulator können Sie das folgende Hintergrundbild laden:
     \begin{lstlisting}[language=Python]
-from mbrobot import *
-
 RobotContext.useBackground("sprites/trail.gif")
 RobotContext.setStartPosition(250, 250)
-
-setSpeed(10)
-
-while True:
-    vL = irLeft.read_digital()
-    vR = irRight.read_digital()
-    if vL == 0 and vR == 0:
-        forward()
-    elif vL == 1 and vR == 0:
-        rightArc(0.1)
-    elif vL == 0 and vR == 1:
-        leftArc(0.1)
-    delay(100)
     \end{lstlisting}
-
-    Die beiden Befehle \texttt{RobotContext.useBackground()}
-    und \texttt{RobotContext.setStartPosition()} dienen
-    ausschliesslich der Simulation. Sie legen das Hintergrundbild
-    und die Startposition des Roboters im Simulator fest.
-    Auf dem echten Roboter haben sie keine Wirkung.
-
-    Die Befehle \texttt{irLeft.read\_digital()} und
-    \texttt{irRight.read\_digital()} lesen die beiden
-    Infrarotsensoren aus. Dabei bedeutet der Wert
-    \texttt{0}, dass eine dunkle Fläche erkannt wird,
-    und der Wert \texttt{1}, dass eine helle Fläche
-    erkannt wird.
-
-    Je nach Kombination der beiden Sensorwerte
-    reagiert der Roboter unterschiedlich:
-    \begin{itemize}
-        \item \texttt{vL == 0} und \texttt{vR == 0}:
-              Der Roboter fährt geradeaus.
-        \item \texttt{vL == 1} und \texttt{vR == 0}:
-              Der Roboter fährt einen engen Rechtsbogen.
-        \item \texttt{vL == 0} und \texttt{vR == 1}:
-              Der Roboter fährt einen engen Linksbogen.
-    \end{itemize}
-
-    Sind beide Sensorwerte gleich \texttt{1}, wird
-    kein neuer Bewegungsbefehl ausgeführt. Der Roboter
-    behält dann seinen bisherigen Bewegungszustand bei.
-
-    \textbf{Probieren Sie das Programm aus:}
-    \begin{enumerate}
-        \item Führen Sie das Programm zunächst im Simulator
-              von WebTigerPython aus und beobachten Sie,
-              wie der Roboter der schwarzen Linie folgt.
-
-        \item Übertragen Sie das Programm anschliessend
-              auf den echten Roboter. Verwenden Sie dazu
-              die bereitgestellte Vorlage mit einer
-              schwarzen Linie und platzieren Sie den
-              Roboter so, dass beide Infrarotsensoren
-              die Linie erkennen.
-
-    \end{enumerate}
-\end{myexample}
-
-
+    Testen Sie das Programm zunächst im Simulator und anschliessend auf dem echten Roboter.
+\end{myexercise}
 \begin{myexercise}
     Der Roboter soll mithilfe
     seiner beiden Infrarotsensoren einer Linie folgen.
@@ -1456,83 +1542,6 @@ while True:
 \end{myexercise}
 
 
-
-\begin{myexercise}
-    \textbf{Ein Zielobjekt suchen und anfahren}
-
-    Das folgende Programm lässt den Roboter nach einem
-    Zielobjekt (\emph{Target}) suchen. Dazu dreht er sich
-    schrittweise nach rechts und misst dabei mit seinem
-    Ultraschallsensor die Distanz zu Objekten in seiner
-    Umgebung. Sobald er ein Objekt in weniger als
-    \(\SI{40}{\centi\meter}\) Entfernung erkennt,
-    dreht er sich noch etwas weiter und beendet die Suche.
-    Anschliessend fährt er vorwärts.
-
-    Die ersten beiden Zeilen konfigurieren das Zielobjekt
-    für die Simulation. Mit \texttt{mesh} wird dessen
-    Form festgelegt, während \texttt{RobotContext.useTarget()}
-    das Zielobjekt im Simulator platziert.
-
-    \begin{lstlisting}[language=Python]
-from mbrobot import *
-
-mesh = [(50,0), (25,43), (-25,43),
-        (-50,0), (-25,-43), (25,-43)]
-RobotContext.useTarget("sprites/redtarget.gif",
-                       mesh, 400, 400)
-
-def searchTarget():
-    while True:
-        right()
-        delay(50)
-        dist = getDistance()
-        print(dist)
-        if dist < 40:
-            right()
-            delay(500)
-            break
-
-setSpeed(10)
-searchTarget()
-forward()
-    \end{lstlisting}
-
-    \textbf{Auftrag:}
-
-    Ergänzen Sie das Programm so, dass der Roboter nach
-    dem Auffinden des Zielobjekts nicht einfach
-    ununterbrochen vorwärtsfährt, sondern in regelmässigen
-    Abständen die Distanz zum Zielobjekt misst.
-
-    Sobald die gemessene Distanz kleiner als
-    \(\SI{10}{\centi\meter}\) ist, soll der Roboter
-    anhalten und das Programm beenden.
-
-    \begin{myanswer}
-        Die letzten beiden Zeilen werden durch
-        folgende Befehle ersetzt:
-
-        \begin{lstlisting}[language=Python]
-setSpeed(10)
-searchTarget()
-forward()
-
-while True:
-    dist = getDistance()
-    if dist < 10:
-        stop()
-        break
-    delay(100)
-        \end{lstlisting}
-
-        Der Roboter misst alle 100 Millisekunden erneut
-        die Distanz zum Zielobjekt. Solange diese mindestens
-        10 cm beträgt, fährt er weiter. Sobald die
-        Distanz kleiner als 10 cm ist, hält er an.
-        Mit \texttt{break} wird die Schleife beendet.
-    \end{myanswer}
-\end{myexercise}
 
 
 
