@@ -30,7 +30,6 @@ def turnRight():
 
 
 memory = []
-n = 0
 setSpeed(30)
 # learning
 while not (button_a.is_pressed() and button_b.was_pressed()):
