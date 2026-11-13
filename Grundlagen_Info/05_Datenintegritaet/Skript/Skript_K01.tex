@@ -1152,7 +1152,7 @@ Bisher haben wir primär eine Art kennengelernt, wie Fehler automatisch behoben 
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{c|c|c||c}
-			\underline{1} & \underline{1} & \underline{1} & \texttt{1}    \\\midrule\midrule
+			\underline{1} & \underline{1} & \underline{1} & \underline{1} \\\midrule\midrule
 			0             & 1             & 0             & \underline{1} \\\midrule
 			1             & 0             & 1             & \underline{0} \\
 		\end{tabular}
@@ -1163,7 +1163,7 @@ Bisher haben wir primär eine Art kennengelernt, wie Fehler automatisch behoben 
 	Die Kontrollbits sind so gewählt, dass jede Spalte und jede Zeile eine gerade Anzahl Einsen enthält. Wenn nun ein Bit geflippt wird, gibt es genau eine Spalte und eine Zeile, in welcher die Anzahl Einsen \textit{nicht} gerade ist, somit können wir den Ort des abgefälschten Bits lokalisieren und den Fehler automatisch beheben.
 
 	Um das neue Codewort (mit \underline{Kontrollbits}) zu bilden, muss abgemacht werden in welcher Reihenfolge die Kontrollbits angefügt werden. Wir werden wie folgt vorgehen: Fügen Sie dem ursprünglichen Code-Wort zuerst die erste Zeile von links nach rechts, und danach die letzte Spalte von oben nach unten an. Am Schluss soll das Bit in der Ecke oben rechts angefügt werden. Für das Beispiel oben ergibt sich das Codewort:
-	\[010\, 101\, 111\, 10\, 0\]
+	\[010\, 101\, \underbar{111}\, \underbar{10}\, \underline{1}\]
 
 \end{mydefinition}
 
@@ -1171,11 +1171,8 @@ Bisher haben wir primär eine Art kennengelernt, wie Fehler automatisch behoben 
 \begin{myexercise}
 	Die Nachricht \texttt{1010 1011 0000 1111} soll mit der
 	Kartentrick-Kodierung um Kontrollbits ergänzt werden.
-	Wie lautet das entsprechende Codewort?
+	Wie lautet das entsprechende Codewort, wenn man die Nachricht in einer \(4\times 4\)-Tabelle anordnet?
 	\begin{myanswer}
-		Die Nachricht wird zunächst in einer \(4\times 4\)-Tabelle
-		angeordnet. Anschliessend werden die Kontrollbits so ergänzt,
-		dass jede Zeile und jede Spalte eine gerade Anzahl Einsen enthält.
 
 		\begin{center}
 			\begin{tabular}{|c|c|c|c|c|}
